@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+<!--
+  ============================================================================
+  UNDANGAN PERNIKAHAN DIGITAL — RIFFAN & SHINTIA
+  ============================================================================
+  Single File HTML  •  Tailwind CSS (CDN)  •  Vanilla JavaScript
+  Dibuat untuk di-deploy ke GitHub Pages.
+
+  STRUKTUR FOLDER YANG DISARANKAN DI REPO:
+    /index.html          <- file ini
+    /Asset/backsound.mp3 <- musik latar (nama file HARUS backsound.mp3)
+
+  CARA GANTI DATA CEPAT: cari blok "KONFIGURASI UTAMA" di bagian <script> bawah.
+  CARA HUBUNGKAN FIREBASE: lihat komentar "PANDUAN FIREBASE" di bagian paling
+  bawah file ini (tepat di atas <script type="module">).
+  ============================================================================
+-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFF8F3" />
+
+  <!-- ===================== SEO META ===================== -->
+  <title>Undangan Pernikahan Riffan &amp; Shintia — 25 September 2026</title>
+  <meta name="description" content="Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri akad nikah dan syukuran pernikahan Syariffan, S.Pd & Shintia Seppianti Safitri pada 25 September 2026 di Sawahlunto, Sumatera Barat." />
+  <meta name="keywords" content="undangan pernikahan, wedding invitation, Riffan dan Shintia, Sawahlunto, akad nikah, syukuran pernikahan, undangan digital" />
+  <meta name="author" content="Syariffan &amp; Shintia Seppianti Safitri" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://riffan-shintia.github.io/" />
+
+  <!-- ===================== OPEN GRAPH / SOSIAL MEDIA ===================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Undangan Pernikahan Riffan &amp; Shintia" />
+  <meta property="og:title" content="Undangan Pernikahan Riffan &amp; Shintia" />
+  <meta property="og:description" content="Jumat, 25 September 2026 — Akad Nikah & Syukuran Pernikahan. Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu." />
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1200" />
+  <meta property="og:image:alt" content="Foto pernikahan Riffan dan Shintia" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Undangan Pernikahan Riffan &amp; Shintia" />
+  <meta name="twitter:description" content="Jumat, 25 September 2026 — Akad Nikah & Syukuran Pernikahan di Sawahlunto, Sumatera Barat." />
+  <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1200" />
+
+  <!-- Favicon berbentuk emoji (tanpa file tambahan) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💐</text></svg>" />
+
+  <!-- ===================== FONTS (ELEGANT SERIF) ===================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Italianno&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- ===================== TAILWIND CSS ===================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    /* Konfigurasi tema Tailwind: palet Merah Terang + Navy Blue, nuansa lembut */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:  { light: '#3A55B8', DEFAULT: '#1B2A6B', deep: '#14205A', ink: '#0F1B4C' },
+            rouge: { light: '#FF6B81', DEFAULT: '#E1233F', deep: '#B81430' },
+            gold:  { light: '#E7C766', DEFAULT: '#C9A227' },
+            cream: { DEFAULT: '#FFF8F3', deep: '#FFF0E9', blush: '#FFF1F0' }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script:  ['"Italianno"', 'cursive'],
+            arabic:  ['"Amiri"', 'serif']
+          },
+          borderRadius: { '4xl': '2rem', '5xl': '2.75rem' }
+        }
+      }
+    };
+  </script>
+
+  <!-- ===================== CUSTOM STYLE ===================== -->
+  <style>
+    :root{
+      --navy:#1B2A6B; --navy-deep:#14205A; --navy-ink:#0F1B4C;
+      --rouge:#E1233F; --rouge-light:#FF6B81;
+      --gold:#C9A227; --cream:#FFF8F3; --cream-deep:#FFF0E9;
+    }
+
+    html, body { max-width:100%; overflow-x:hidden; }
+    body{
+      font-family:'Cormorant Garamond', Georgia, serif;
+      color:var(--navy-ink);
+      background:var(--cream);
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+      overscroll-behavior-y:none;
+    }
+
+    /* Kunci scroll saat amplop digital masih tertutup */
+    html.is-locked, body.is-locked{ overflow:hidden !important; height:100%; }
+
+    /* ---------- Latar botanical lembut (bukan gelap) ---------- */
+    .bg-petal{
+      background:
+        radial-gradient(1100px 520px at 12% -8%,  rgba(255,107,129,.16), transparent 62%),
+        radial-gradient(980px 520px at 92% 8%,    rgba(58,85,184,.14),  transparent 60%),
+        radial-gradient(900px 560px at 50% 108%,  rgba(201,162,39,.12), transparent 62%),
+        linear-gradient(180deg, #FFFBF8 0%, #FFF6F1 48%, #FFF9F4 100%);
+    }
+    .bg-blush{ background:linear-gradient(180deg,#FFF5F5 0%,#FFF9F5 55%,#FFF8F3 100%); }
+    .bg-sky  { background:linear-gradient(180deg,#F6F8FF 0%,#FFF9F5 60%,#FFF8F3 100%); }
+
+    /* ---------- Tipografi ---------- */
+    .title-script{ font-family:'Italianno',cursive; line-height:.95; }
+    .title-serif { font-family:'Playfair Display',Georgia,serif; }
+    .arabic      { font-family:'Amiri',serif; direction:rtl; line-height:2.2; }
+    .tracking-wider-2{ letter-spacing:.22em; }
+    .prose-narrow{ max-width:62ch; margin-inline:auto; }
+
+    .text-gradient{
+      background:linear-gradient(105deg,var(--rouge) 0%, var(--rouge-light) 26%, var(--navy) 74%, var(--navy-deep) 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* ---------- Kartu ---------- */
+    .card-soft{
+      background:rgba(255,255,255,.82);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(27,42,107,.10);
+      box-shadow:0 18px 46px -22px rgba(27,42,107,.34), 0 2px 10px -6px rgba(225,35,63,.14);
+    }
+    .card-edge{ position:relative; overflow:hidden; }
+    .card-edge::before{
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(135deg, rgba(225,35,63,.10), transparent 32%, transparent 68%, rgba(27,42,107,.10));
+    }
+
+    /* ---------- Tombol ---------- */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      border-radius:9999px; font-family:'Playfair Display',serif; font-weight:600;
+      letter-spacing:.04em; transition:transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+    }
+    .btn:active{ transform:scale(.97); }
+    .btn-primary{
+      background:linear-gradient(120deg,var(--rouge) 0%, #E8425A 45%, var(--navy) 100%);
+      color:#fff; box-shadow:0 14px 30px -14px rgba(225,35,63,.75);
+    }
+    .btn-primary:hover{ box-shadow:0 18px 38px -14px rgba(27,42,107,.7); }
+    .btn-outline{
+      background:#fff; color:var(--navy-deep); border:1.5px solid rgba(27,42,107,.25);
+      box-shadow:0 10px 24px -18px rgba(27,42,107,.5);
+    }
+    .btn-outline:hover{ border-color:var(--rouge); color:var(--rouge); }
+
+    /* Fokus keyboard tetap terlihat (aksesibilitas) */
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible{
+      outline:3px solid var(--rouge-light); outline-offset:3px; border-radius:12px;
+    }
+
+    /* ---------- Animasi reveal (subtle) ---------- */
+    .reveal{ opacity:0; transform:translateY(26px); transition:opacity .95s cubic-bezier(.22,.61,.36,1), transform .95s cubic-bezier(.22,.61,.36,1); }
+    .reveal.is-shown{ opacity:1; transform:none; }
+    .d1{ transition-delay:.10s } .d2{ transition-delay:.20s }
+    .d3{ transition-delay:.30s } .d4{ transition-delay:.40s } .d5{ transition-delay:.50s }
+
+    /* ---------- Parallax ---------- */
+    .parallax-wrap{ overflow:hidden; }
+    [data-parallax]{ will-change:transform; }
+
+    /* ---------- Kelopak melayang (dekoratif, sangat halus) ---------- */
+    .petal{ position:absolute; opacity:.5; animation:drift linear infinite; pointer-events:none; }
+    @keyframes drift{
+      0%   { transform:translate3d(0,-8vh,0) rotate(0deg);   opacity:0 }
+      12%  { opacity:.55 }
+      88%  { opacity:.45 }
+      100% { transform:translate3d(24px,108vh,0) rotate(320deg); opacity:0 }
+    }
+
+    /* ---------- Piringan musik ---------- */
+    .spin{ animation:spin 9s linear infinite; }
+    .spin.is-paused{ animation-play-state:paused; }
+    @keyframes spin{ to{ transform:rotate(360deg) } }
+
+    /* ---------- Timeline kisah ---------- */
+    .story-line{
+      position:absolute; left:50%; top:0; bottom:0; width:2px; transform:translateX(-50%);
+      background:linear-gradient(180deg, transparent, rgba(225,35,63,.35) 8%, rgba(27,42,107,.35) 92%, transparent);
+    }
+    .story-text{ max-height:7.5rem; overflow:hidden; transition:max-height .55s ease; }
+    .story-text.is-open{ max-height:200rem; }
+
+    /* ---------- Galeri ---------- */
+    .gal-item img{ transition:transform .7s cubic-bezier(.22,.61,.36,1); }
+    .gal-item:hover img{ transform:scale(1.06); }
+
+    /* ---------- Lightbox ---------- */
+    #lightbox{ background:rgba(20,32,90,.88); backdrop-filter:blur(6px); }
+
+    /* ---------- Daftar ucapan (slider bergulir) ---------- */
+    .wish-scroll{ max-height:26rem; overflow-y:auto; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:rgba(225,35,63,.45) transparent; }
+    .wish-scroll::-webkit-scrollbar{ width:6px }
+    .wish-scroll::-webkit-scrollbar-thumb{ background:rgba(225,35,63,.45); border-radius:99px }
+
+    /* ---------- Toast ---------- */
+    .toast{
+      transform:translateY(120%); opacity:0;
+      transition:transform .4s cubic-bezier(.22,.61,.36,1), opacity .4s ease;
+    }
+    .toast.is-shown{ transform:translateY(0); opacity:1; }
+
+    /* ---------- Amplop pembuka ---------- */
+    #cover{ transition:opacity .9s ease, transform 1.05s cubic-bezier(.65,0,.35,1); }
+    #cover.is-open{ opacity:0; transform:scale(1.07); pointer-events:none; }
+    .flap{ transform-origin:top center; transition:transform 1s cubic-bezier(.65,0,.35,1); }
+    #cover.is-open .flap{ transform:rotateX(-172deg); }
+
+    /* ---------- Hormati preferensi kurangi gerak ---------- */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition-duration:.01ms !important; }
+      .reveal{ opacity:1; transform:none; }
+    }
+
+    /* Safe area untuk ponsel berponi */
+    .safe-b{ padding-bottom:env(safe-area-inset-bottom, 0px); }
+  </style>
+</head>
+
+<body class="is-locked font-body antialiased">
+
+<!-- ============================================================
+     SPRITE IKON & ORNAMEN FLORAL (SVG, tanpa file eksternal)
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Pembatas floral -->
+    <symbol id="ic-divider" viewBox="0 0 340 46">
+      <path d="M170 10 L178 23 L170 36 L162 23 Z" fill="#C9A227"/>
+      <circle cx="170" cy="23" r="3.2" fill="#E1233F"/>
+      <path d="M156 23 C 128 23 118 12 96 23" stroke="#2B3E8C" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path d="M184 23 C 212 23 222 12 244 23" stroke="#2B3E8C" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="132" cy="17" rx="11" ry="4.6" fill="#FF6B81" opacity=".62" transform="rotate(-18 132 17)"/>
+      <ellipse cx="116" cy="27" rx="9"  ry="4"   fill="#3A55B8" opacity=".5"  transform="rotate(16 116 27)"/>
+      <ellipse cx="208" cy="17" rx="11" ry="4.6" fill="#FF6B81" opacity=".62" transform="rotate(18 208 17)"/>
+      <ellipse cx="224" cy="27" rx="9"  ry="4"   fill="#3A55B8" opacity=".5"  transform="rotate(-16 224 27)"/>
+      <circle cx="88"  cy="23" r="2.6" fill="#C9A227"/>
+      <circle cx="252" cy="23" r="2.6" fill="#C9A227"/>
+      <circle cx="74"  cy="23" r="1.6" fill="#E1233F" opacity=".7"/>
+      <circle cx="266" cy="23" r="1.6" fill="#E1233F" opacity=".7"/>
+    </symbol>
+
+    <!-- Ornamen sudut floral/botanical -->
+    <symbol id="ic-corner" viewBox="0 0 220 220">
+      <path d="M8 8 C 60 34, 96 74, 126 130 C 142 160, 160 186, 196 206"
+            stroke="#2B3E8C" stroke-width="2" fill="none" stroke-linecap="round" opacity=".55"/>
+      <path d="M8 8 C 52 58, 70 110, 78 172" stroke="#2B3E8C" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".35"/>
+      <g opacity=".55">
+        <ellipse cx="58"  cy="52"  rx="20" ry="8" fill="#3A55B8" transform="rotate(38 58 52)"/>
+        <ellipse cx="92"  cy="98"  rx="22" ry="9" fill="#3A55B8" transform="rotate(46 92 98)"/>
+        <ellipse cx="126" cy="150" rx="19" ry="8" fill="#3A55B8" transform="rotate(54 126 150)"/>
+        <ellipse cx="52"  cy="104" rx="17" ry="7" fill="#C9A227" transform="rotate(-24 52 104)"/>
+        <ellipse cx="70"  cy="156" rx="15" ry="6" fill="#C9A227" transform="rotate(-14 70 156)"/>
+      </g>
+      <g transform="translate(36,34)">
+        <g opacity=".85">
+          <g><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#FF6B81"/></g>
+          <g transform="rotate(72)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#FF6B81"/></g>
+          <g transform="rotate(144)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#FF6B81"/></g>
+          <g transform="rotate(216)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#FF6B81"/></g>
+          <g transform="rotate(288)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#FF6B81"/></g>
+          <circle cx="0" cy="0" r="5" fill="#C9A227"/>
+        </g>
+      </g>
+      <g transform="translate(112,124) scale(.72)">
+        <g opacity=".7">
+          <g><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#E1233F"/></g>
+          <g transform="rotate(72)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#E1233F"/></g>
+          <g transform="rotate(144)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#E1233F"/></g>
+          <g transform="rotate(216)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#E1233F"/></g>
+          <g transform="rotate(288)"><ellipse cx="0" cy="-13" rx="6.5" ry="11" fill="#E1233F"/></g>
+          <circle cx="0" cy="0" r="5" fill="#C9A227"/>
+        </g>
+      </g>
+    </symbol>
+
+    <!-- Kelopak tunggal -->
+    <symbol id="ic-petal" viewBox="0 0 24 24">
+      <path d="M12 1C7 6 4 10 4 14a8 8 0 0016 0c0-4-3-8-8-13z" fill="currentColor"/>
+    </symbol>
+
+    <!-- Ikon fungsional -->
+    <symbol id="ic-ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="15" r="6"/><circle cx="16" cy="15" r="6"/><path d="M9 6l1.6 3M15 6l-1.6 3M9 6h6l-1.4-3h-3.2z"/>
+    </symbol>
+    <symbol id="ic-dish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 17h18"/><path d="M4.5 17a7.5 7.5 0 0115 0"/><path d="M12 6.5V9"/><circle cx="12" cy="5" r="1.4"/><path d="M2.5 20.5h19"/>
+    </symbol>
+    <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+    </symbol>
+    <symbol id="ic-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>
+    </symbol>
+    <symbol id="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12.5l5.2 5.2L20 7"/>
+    </symbol>
+    <symbol id="ic-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>
+    </symbol>
+    <symbol id="ic-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H3v6h3l5 4z"/><path d="M17 9l4 6M21 9l-4 6"/>
+    </symbol>
+    <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </symbol>
+    <symbol id="ic-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5l-7 7 7 7"/>
+    </symbol>
+    <symbol id="ic-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="ic-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+      <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-fb" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/>
+    </symbol>
+    <symbol id="ic-tiktok" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16.5 3h-3v12.3a2.6 2.6 0 11-2.1-2.55V9.6A5.7 5.7 0 1016.5 15V9.6a6.6 6.6 0 003.9 1.25V7.8A3.85 3.85 0 0116.5 3z"/>
+    </symbol>
+    <symbol id="ic-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="9" width="18" height="12" rx="2.5"/><path d="M3 13h18M12 9v12"/>
+      <path d="M12 9S10.5 4 8 4a2.4 2.4 0 000 5h4zM12 9s1.5-5 4-5a2.4 2.4 0 010 5h-4z"/>
+    </symbol>
+    <symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 3L10.5 13.5M21 3l-6.8 18-3.7-7.5L3 10.1 21 3z"/>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M3 7l9 6 9-6"/>
+    </symbol>
+    <symbol id="ic-quran" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5.5A2.5 2.5 0 016.5 3H19v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M4 20.5A2.5 2.5 0 016.5 18H19v3H6.5A2.5 2.5 0 014 20.5z"/><path d="M9 8h6M9 11h6"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<!-- ============================================================
+     [ SECTION 0 ] AMPLOP DIGITAL / OPENING SCREEN
+     Menutup seluruh layar, mengunci scroll hingga tombol ditekan.
+     ============================================================ -->
+<section id="cover" class="fixed inset-0 z-[80] flex items-center justify-center overflow-hidden" aria-label="Pembuka undangan">
+
+  <!-- Foto latar dengan lapisan krem lembut agar teks navy tetap kontras -->
+  <div class="absolute inset-0 parallax-wrap">
+    <img
+      class="drive-img absolute inset-0 h-[118%] w-full object-cover object-center -top-[9%]"
+      data-drive="12AVp7LwGmW0EgXFsb3uo637OnsqksV07"
+      src="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1400"
+      referrerpolicy="no-referrer" alt="Riffan dan Shintia" />
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,250,246,.90) 0%,rgba(255,241,240,.93) 45%,rgba(255,248,243,.96) 100%)"></div>
+  </div>
+
+  <!-- Ornamen sudut floral -->
+  <svg class="absolute -left-6 -top-6 h-40 w-40 sm:h-56 sm:w-56 opacity-80" aria-hidden="true"><use href="#ic-corner"/></svg>
+  <svg class="absolute -right-6 -bottom-6 h-40 w-40 sm:h-56 sm:w-56 rotate-180 opacity-80" aria-hidden="true"><use href="#ic-corner"/></svg>
+
+  <!-- Kelopak melayang -->
+  <div id="cover-petals" class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"></div>
+
+  <!-- Konten amplop -->
+  <div class="relative z-10 w-full max-w-md px-6 text-center">
+
+    <!-- Segel amplop -->
+    <div class="mx-auto mb-7 flex h-20 w-20 items-center justify-center rounded-full bg-white/85 shadow-[0_18px_40px_-20px_rgba(27,42,107,.7)] ring-1 ring-navy/15 flap">
+      <svg class="h-9 w-9 text-rouge" aria-hidden="true"><use href="#ic-mail"/></svg>
+    </div>
+
+    <p class="title-serif text-[11px] tracking-wider-2 text-navy/70">Bismillahirrahmanirrahim</p>
+
+    <p class="mt-5 title-serif text-[12px] tracking-wider-2 text-navy/75">Undangan Pernikahan</p>
+
+    <h1 class="mt-1 title-script text-[5.2rem] leading-[0.82] text-gradient sm:text-[6.5rem]">
+      Riffan<br /><span class="title-serif text-[1.4rem] align-middle text-navy/60">&amp;</span><br />Shintia
+    </h1>
+
+    <svg class="mx-auto mt-4 h-9 w-52 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="title-serif mt-3 text-base font-semibold tracking-[.14em] text-navy-deep">
+      JUM'AT, 25 SEPTEMBER 2026
+    </p>
+
+    <!-- Kepada tamu (otomatis dari URL: ?to=Nama%20Tamu) -->
+    <div class="mt-8 rounded-4xl card-soft px-6 py-5">
+      <p class="text-[15px] text-navy/75">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+      <p id="cover-guest" class="title-serif mt-1 text-[22px] font-semibold text-rouge-deep">Tamu Undangan</p>
+      <p class="mt-2 text-[14px] leading-relaxed text-navy/70">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
+    </div>
+
+    <button id="btn-open" type="button"
+      class="btn btn-primary mt-7 px-9 py-3.5 text-[15px]">
+      <svg class="h-5 w-5" aria-hidden="true"><use href="#ic-mail"/></svg>
+      Buka Undangan
+    </button>
+
+    <p class="mt-4 text-[12.5px] text-navy/55">Undangan akan terbuka beserta musik latar</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 1 ] HERO — parallax foto utama
+     ============================================================ -->
+<header id="hero" class="relative flex min-h-[100svh] items-center justify-center overflow-hidden parallax-wrap" aria-label="Sampul undangan">
+
+  <div class="absolute inset-0 parallax-wrap">
+    <img
+      class="drive-img absolute left-0 top-[-12%] h-[124%] w-full object-cover object-center"
+      data-parallax="0.16"
+      data-drive="12AVp7LwGmW0EgXFsb3uo637OnsqksV07"
+      src="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1600"
+      referrerpolicy="no-referrer" alt="Riffan dan Shintia" />
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,251,248,.86) 0%,rgba(255,241,240,.80) 40%,rgba(255,248,243,.97) 100%)"></div>
+  </div>
+
+  <svg class="absolute -left-8 -top-8 h-44 w-44 opacity-70 sm:h-60 sm:w-60" aria-hidden="true"><use href="#ic-corner"/></svg>
+  <svg class="absolute -right-8 top-24 h-36 w-36 -scale-x-100 opacity-60 sm:h-52 sm:w-52" aria-hidden="true"><use href="#ic-corner"/></svg>
+
+  <div class="relative z-10 w-full max-w-2xl px-6 py-24 text-center">
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/70">THE WEDDING OF</p>
+
+    <h2 class="reveal d1 mt-3 title-script text-[5.6rem] leading-[0.84] text-gradient sm:text-[8rem]">
+      Riffan &amp; Shintia
+    </h2>
+
+    <svg class="reveal d2 mx-auto mt-5 h-10 w-64 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d2 mt-4 prose-narrow text-[17px] text-navy/80">
+      Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta'ala,
+      kami bermaksud menyelenggarakan pernikahan putra-putri kami.
+    </p>
+
+    <div class="reveal d3 mx-auto mt-7 inline-flex items-center gap-5 rounded-4xl card-soft px-8 py-4">
+      <div class="text-center">
+        <p class="title-serif text-[11px] tracking-[.2em] text-navy/60">JUM'AT</p>
+        <p class="title-serif text-[30px] font-bold leading-none text-rouge">25</p>
+        <p class="title-serif text-[11px] tracking-[.2em] text-navy/60">SEP</p>
+      </div>
+      <span class="h-12 w-px bg-navy/15"></span>
+      <div class="text-left">
+        <p class="title-serif text-[19px] font-semibold text-navy-deep">September 2026</p>
+        <p class="text-[14px] text-navy/70">Sawahlunto, Sumatera Barat</p>
+      </div>
+    </div>
+
+    <p class="reveal d4 mt-10 text-[13px] text-navy/50">Gulir ke bawah untuk membaca undangan</p>
+    <div class="reveal d4 mx-auto mt-3 h-10 w-px bg-gradient-to-b from-rouge/60 to-transparent"></div>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     [ SECTION 2 ] SALAM PEMBUKA & AYAT SUCI (QS. Ar-Rum : 21)
+     ============================================================ -->
+<section class="bg-blush relative overflow-hidden py-20 sm:py-24" aria-label="Ayat suci Al-Qur'an">
+  <div class="mx-auto w-full max-w-3xl px-6 text-center">
+
+    <p class="reveal arabic text-[26px] text-rouge sm:text-[30px]">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p class="reveal d1 mt-2 text-[15px] italic text-navy/70">Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang</p>
+
+    <p class="reveal d1 mt-8 title-serif text-[19px] font-semibold tracking-[.06em] text-navy-deep sm:text-[22px]">
+      Assalamu'alaikum Warahmatullahi Wabarakatuh
+    </p>
+
+    <svg class="reveal d2 mx-auto mt-6 h-10 w-60 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <!-- Kartu ayat -->
+    <article class="reveal d2 card-soft card-edge mt-8 rounded-5xl px-6 py-9 sm:px-12 sm:py-12">
+      <svg class="mx-auto h-8 w-8 text-gold" aria-hidden="true"><use href="#ic-quran"/></svg>
+
+      <p class="arabic mt-6 text-[23px] leading-[2.3] text-navy-deep sm:text-[28px]">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+      </p>
+
+      <div class="mx-auto my-7 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+
+      <p class="prose-narrow text-[16px] leading-relaxed text-navy/85 sm:text-[17px]">
+        &ldquo;Dan di antara tanda-tanda kekuasaan-Nya adalah Dia menciptakan untuk kalian
+        pasangan-pasangan dari jenis kalian sendiri, agar kalian merasa tenteram kepadanya.
+        Dia juga menumbuhkan rasa cinta <em>(mawaddah)</em> dan kasih sayang <em>(rahmah)</em> di antara kalian.
+        Sesungguhnya pada hal yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah)
+        bagi orang-orang yang mau berpikir.&rdquo;
+      </p>
+
+      <p class="mt-5 title-serif text-[14px] font-semibold tracking-[.14em] text-rouge">
+        QS. AR-RUM (30) : 21
+      </p>
+    </article>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 3 ] MEMPELAI & KELUARGA
+     ============================================================ -->
+<section id="mempelai" class="bg-petal relative overflow-hidden py-20 sm:py-24" aria-label="Profil mempelai">
+
+  <svg class="absolute -left-10 top-10 h-44 w-44 opacity-40" aria-hidden="true" data-parallax="0.07"><use href="#ic-corner"/></svg>
+  <svg class="absolute -right-10 bottom-10 h-44 w-44 rotate-180 opacity-40" aria-hidden="true" data-parallax="-0.07"><use href="#ic-corner"/></svg>
+
+  <div class="mx-auto w-full max-w-5xl px-6 text-center">
+
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Yang berbahagia</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Kedua Mempelai</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d2 mx-auto mt-5 prose-narrow text-[16px] text-navy/80">
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.
+      Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan di antara kami.
+    </p>
+
+    <div class="mt-12 grid gap-10 md:grid-cols-2 md:gap-8">
+
+      <!-- ---------- Mempelai Pria ---------- -->
+      <article class="reveal d2 card-soft card-edge rounded-5xl px-6 py-9 text-center sm:px-9">
+        <div class="relative mx-auto h-44 w-44 sm:h-52 sm:w-52">
+          <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-rouge/25 via-gold/20 to-navy/25 blur-[2px]"></div>
+          <img
+            class="drive-img relative h-full w-full rounded-full object-cover object-center shadow-[0_20px_46px_-22px_rgba(27,42,107,.8)] ring-4 ring-white"
+            data-drive="1xlujrKrDP6RvjYQsm7vYH6_BqWwDTOaD"
+            src="https://lh3.googleusercontent.com/d/1xlujrKrDP6RvjYQsm7vYH6_BqWwDTOaD=w800"
+            referrerpolicy="no-referrer" loading="lazy"
+            alt="Foto mempelai pria Syariffan, S.Pd" />
+        </div>
+
+        <h3 class="mt-6 title-script text-[3.6rem] leading-none text-navy-deep">Riffan</h3>
+        <p class="title-serif mt-1 text-[18px] font-semibold text-rouge-deep">Syariffan, S.Pd</p>
+        <p class="mt-1 text-[14.5px] text-navy/70">Guru &middot; Batam, 2 Mei 2001</p>
+
+        <div class="mx-auto my-5 h-px w-20 bg-gradient-to-r from-transparent via-rouge/50 to-transparent"></div>
+
+        <p class="text-[15px] text-navy/80">Putra pertama dari lima bersaudara</p>
+        <p class="mt-2 text-[16px] leading-relaxed text-navy-deep">
+          Bapak Syawaluddin<br />
+          <span class="text-navy/60 text-[14px]">&amp;</span><br />
+          Ibu Deli Fitri
+        </p>
+
+        <p class="mt-4 text-[14px] leading-relaxed text-navy/70">
+          Dusun Sungai Loban, Desa Muaro Kalaban,<br />Kec. Silungkang, Kota Sawahlunto
+        </p>
+
+        <!-- Sosial media -->
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a href="https://www.instagram.com/pak_guru_riffan/" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline h-11 w-11 p-0" aria-label="Instagram Riffan">
+            <svg class="h-[19px] w-[19px]" aria-hidden="true"><use href="#ic-ig"/></svg>
+          </a>
+          <a href="https://www.facebook.com/search/top?q=Pak%20Guru%20Riffan" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline h-11 w-11 p-0" aria-label="Facebook Riffan">
+            <svg class="h-[19px] w-[19px]" aria-hidden="true"><use href="#ic-fb"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@pak_guru_riffan" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline h-11 w-11 p-0" aria-label="TikTok Riffan">
+            <svg class="h-[19px] w-[19px]" aria-hidden="true"><use href="#ic-tiktok"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ---------- Mempelai Wanita ---------- -->
+      <article class="reveal d3 card-soft card-edge rounded-5xl px-6 py-9 text-center sm:px-9">
+        <div class="relative mx-auto h-44 w-44 sm:h-52 sm:w-52">
+          <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-navy/25 via-gold/20 to-rouge/25 blur-[2px]"></div>
+          <img
+            class="drive-img relative h-full w-full rounded-full object-cover object-center shadow-[0_20px_46px_-22px_rgba(27,42,107,.8)] ring-4 ring-white"
+            data-drive="1TkQrSlz_hzoqL2I7TEpid34T8mUbcjZL"
+            src="https://lh3.googleusercontent.com/d/1TkQrSlz_hzoqL2I7TEpid34T8mUbcjZL=w800"
+            referrerpolicy="no-referrer" loading="lazy"
+            alt="Foto mempelai wanita Shintia Seppianti Safitri" />
+        </div>
+
+        <h3 class="mt-6 title-script text-[3.6rem] leading-none text-navy-deep">Shintia</h3>
+        <p class="title-serif mt-1 text-[18px] font-semibold text-rouge-deep">Shintia Seppianti Safitri</p>
+        <p class="mt-1 text-[14.5px] text-navy/70">Guru &middot; Padang, 23 September 2000</p>
+
+        <div class="mx-auto my-5 h-px w-20 bg-gradient-to-r from-transparent via-navy/50 to-transparent"></div>
+
+        <p class="text-[15px] text-navy/80">Putri pertama dari dua bersaudara</p>
+        <p class="mt-2 text-[16px] leading-relaxed text-navy-deep">
+          Bapak Ade Fitri<br />
+          <span class="text-navy/60 text-[14px]">&amp;</span><br />
+          Ibu Sasmalinda
+        </p>
+
+        <p class="mt-4 text-[14px] leading-relaxed text-navy/70">
+          Dusun Gunung Balai, Desa Kolok Nan Tuo,<br />Kec. Barangin, Kota Sawahlunto
+        </p>
+
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a href="https://www.instagram.com/bukguruicin/" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline h-11 w-11 p-0" aria-label="Instagram Shintia">
+            <svg class="h-[19px] w-[19px]" aria-hidden="true"><use href="#ic-ig"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 4 ] HITUNG MUNDUR + SIMPAN TANGGAL
+     ============================================================ -->
+<section id="countdown" class="bg-sky relative overflow-hidden py-20 sm:py-24" aria-label="Hitung mundur acara">
+
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <svg class="absolute left-1/2 top-6 h-64 w-64 -translate-x-1/2 opacity-[.08]" data-parallax="0.1"><use href="#ic-corner"/></svg>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-3xl px-6 text-center">
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Menghitung hari</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Save The Date</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d2 mt-5 text-[16px] text-navy/80">Jum'at, 25 September 2026 &middot; Pukul 15.00 WIB</p>
+
+    <!-- Kotak hitung mundur -->
+    <div id="cd-grid" class="reveal d2 mt-9 grid grid-cols-4 gap-2.5 sm:gap-4">
+      <div class="card-soft rounded-3xl px-1 py-5 sm:py-7">
+        <p id="cd-d" class="title-serif text-[30px] font-bold leading-none text-rouge sm:text-[46px]">00</p>
+        <p class="mt-2 title-serif text-[10.5px] tracking-[.16em] text-navy/65 sm:text-[12px]">HARI</p>
+      </div>
+      <div class="card-soft rounded-3xl px-1 py-5 sm:py-7">
+        <p id="cd-h" class="title-serif text-[30px] font-bold leading-none text-rouge sm:text-[46px]">00</p>
+        <p class="mt-2 title-serif text-[10.5px] tracking-[.16em] text-navy/65 sm:text-[12px]">JAM</p>
+      </div>
+      <div class="card-soft rounded-3xl px-1 py-5 sm:py-7">
+        <p id="cd-m" class="title-serif text-[30px] font-bold leading-none text-rouge sm:text-[46px]">00</p>
+        <p class="mt-2 title-serif text-[10.5px] tracking-[.16em] text-navy/65 sm:text-[12px]">MENIT</p>
+      </div>
+      <div class="card-soft rounded-3xl px-1 py-5 sm:py-7">
+        <p id="cd-s" class="title-serif text-[30px] font-bold leading-none text-rouge sm:text-[46px]">00</p>
+        <p class="mt-2 title-serif text-[10.5px] tracking-[.16em] text-navy/65 sm:text-[12px]">DETIK</p>
+      </div>
+    </div>
+
+    <p id="cd-done" class="mt-6 hidden title-serif text-[19px] font-semibold text-rouge">
+      Alhamdulillah, acara telah berlangsung. Terima kasih atas doa dan kehadirannya.
+    </p>
+
+    <button type="button" data-cal="ics" data-event="all" class="reveal d3 btn btn-primary mt-9 px-8 py-3.5 text-[15px]">
+      <svg class="h-5 w-5" aria-hidden="true"><use href="#ic-cal"/></svg>
+      Simpan ke kalender
+    </button>
+    <p class="reveal d3 mt-3 text-[13px] text-navy/55">Berkas .ics berisi seluruh rangkaian acara</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 5 ] RANGKAIAN ACARA
+     ============================================================ -->
+<section id="acara" class="bg-petal relative overflow-hidden py-20 sm:py-24" aria-label="Rangkaian acara pernikahan">
+
+  <svg class="absolute -left-12 top-24 h-48 w-48 opacity-35" aria-hidden="true" data-parallax="0.06"><use href="#ic-corner"/></svg>
+  <svg class="absolute -right-12 bottom-24 h-48 w-48 rotate-180 opacity-35" aria-hidden="true" data-parallax="-0.06"><use href="#ic-corner"/></svg>
+
+  <div class="relative mx-auto w-full max-w-4xl px-6 text-center">
+
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Waktu &amp; tempat</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Rangkaian Acara</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <div class="mt-12 space-y-9">
+
+      <!-- ---------- Akad Nikah ---------- -->
+      <article class="reveal d2 card-soft card-edge overflow-hidden rounded-5xl text-center">
+        <div class="px-6 pt-9 sm:px-10">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-rouge/12 to-navy/12 ring-1 ring-rouge/25">
+            <svg class="h-8 w-8 text-rouge" aria-hidden="true"><use href="#ic-ring"/></svg>
+          </div>
+
+          <h3 class="mt-5 title-serif text-[27px] font-bold text-navy-deep sm:text-[32px]">Akad Nikah</h3>
+          <p class="mt-1 text-[14px] text-navy/65">Kantor Urusan Agama &middot; Pihak Mempelai Wanita</p>
+
+          <div class="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+
+          <p class="title-serif text-[19px] font-semibold text-rouge-deep">Jum'at, 25 September 2026</p>
+          <p class="mt-1 text-[16px] text-navy/85">Pukul 15.00 WIB &ndash; selesai</p>
+
+          <p class="mt-5 title-serif text-[17px] font-semibold text-navy-deep">KUA Kecamatan Barangin</p>
+          <p class="mx-auto mt-1 max-w-sm text-[14.5px] leading-relaxed text-navy/70">
+            8QJ7+M3P, Jl. Soekarno Hatta, Durian I, Kec. Barangin,<br />
+            Kota Sawahlunto, Sumatera Barat 27355
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 pb-7">
+            <a href="https://maps.app.goo.gl/r5Zf6JvNXeNoYA2x6" target="_blank" rel="noopener noreferrer"
+               class="btn btn-primary px-6 py-3 text-[14px]">
+              <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-map"/></svg>
+              Buka di Google Maps
+            </a>
+            <button type="button" data-cal="google" data-event="akad" class="btn btn-outline px-5 py-3 text-[14px]">
+              <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+              Google Calendar
+            </button>
+            <button type="button" data-cal="ics" data-event="akad" class="btn btn-outline px-5 py-3 text-[14px]">
+              <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+              Apple / Outlook
+            </button>
+          </div>
+        </div>
+
+        <!-- Peta tersemat untuk lokasi akad -->
+        <div class="relative h-[300px] w-full sm:h-[360px]">
+          <iframe
+            title="Peta lokasi KUA Kecamatan Barangin, Sawahlunto"
+            src="https://www.google.com/maps?q=KUA%20Kecamatan%20Barangin%2C%20Jl.%20Soekarno%20Hatta%2C%20Durian%20I%2C%20Kec.%20Barangin%2C%20Kota%20Sawahlunto%2C%20Sumatera%20Barat%2027355&output=embed&hl=id&z=16"
+            class="h-full w-full border-0" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </article>
+
+      <!-- ---------- Syukuran Sesi 1 ---------- -->
+      <article class="reveal d2 card-soft card-edge rounded-5xl px-6 py-9 text-center sm:px-10">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-navy/12 to-rouge/12 ring-1 ring-navy/25">
+          <svg class="h-8 w-8 text-navy" aria-hidden="true"><use href="#ic-dish"/></svg>
+        </div>
+
+        <h3 class="mt-5 title-serif text-[25px] font-bold text-navy-deep sm:text-[29px]">Syukuran Pernikahan</h3>
+        <p class="mt-1 text-[14px] text-navy/65">Kediaman Mempelai Wanita</p>
+
+        <div class="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+
+        <p class="title-serif text-[19px] font-semibold text-rouge-deep">Jum'at, 25 September 2026</p>
+        <p class="mt-1 text-[16px] text-navy/85">Pukul 17.00 WIB &ndash; selesai</p>
+
+        <p class="mt-5 title-serif text-[17px] font-semibold text-navy-deep">Kolok Nan Tuo</p>
+        <p class="mt-1 text-[14.5px] leading-relaxed text-navy/70">
+          Dusun Gunung Balai, Desa Kolok Nan Tuo,<br />Kec. Barangin, Kota Sawahlunto
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+          <a href="https://maps.app.goo.gl/G5LYq2jqVZE5bLG88?g_st=ac" target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary px-6 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-map"/></svg>
+            Petunjuk arah
+          </a>
+          <button type="button" data-cal="google" data-event="syukuran1" class="btn btn-outline px-5 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+            Google Calendar
+          </button>
+          <button type="button" data-cal="ics" data-event="syukuran1" class="btn btn-outline px-5 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+            Apple / Outlook
+          </button>
+        </div>
+      </article>
+
+      <!-- ---------- Syukuran Sesi 2 ---------- -->
+      <article class="reveal d3 card-soft card-edge rounded-5xl px-6 py-9 text-center sm:px-10">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-rouge/12 to-gold/15 ring-1 ring-rouge/25">
+          <svg class="h-8 w-8 text-rouge" aria-hidden="true"><use href="#ic-dish"/></svg>
+        </div>
+
+        <h3 class="mt-5 title-serif text-[25px] font-bold text-navy-deep sm:text-[29px]">Syukuran Pernikahan</h3>
+        <p class="mt-1 text-[14px] text-navy/65">Kediaman Mempelai Pria</p>
+
+        <div class="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+
+        <p class="title-serif text-[19px] font-semibold text-rouge-deep">Ahad, 27 September 2026</p>
+        <p class="mt-1 text-[16px] text-navy/85">Pukul 08.00 WIB &ndash; selesai</p>
+
+        <p class="mt-5 title-serif text-[17px] font-semibold text-navy-deep">Muaro Kalaban</p>
+        <p class="mt-1 text-[14.5px] leading-relaxed text-navy/70">
+          Dusun Sungai Loban, Desa Muaro Kalaban,<br />Kec. Silungkang, Kota Sawahlunto
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+          <a href="https://maps.app.goo.gl/dq6ZzhsKqq3pJa2H6" target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary px-6 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-map"/></svg>
+            Petunjuk arah
+          </a>
+          <button type="button" data-cal="google" data-event="syukuran2" class="btn btn-outline px-5 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+            Google Calendar
+          </button>
+          <button type="button" data-cal="ics" data-event="syukuran2" class="btn btn-outline px-5 py-3 text-[14px]">
+            <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-cal"/></svg>
+            Apple / Outlook
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 6 ] KISAH KAMI — TIMELINE VERTIKAL
+     ============================================================ -->
+<section id="kisah" class="bg-blush relative overflow-hidden py-20 sm:py-24" aria-label="Kisah perjalanan kami">
+  <div class="relative mx-auto w-full max-w-4xl px-6 text-center">
+
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Perjalanan yang Allah tuliskan</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Kisah Kami</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <!-- Timeline: garis di tengah, kartu berselang-seling pada layar lebar -->
+    <div class="relative mt-14">
+      <span class="story-line hidden md:block" aria-hidden="true"></span>
+      <span class="story-line left-[18px] md:hidden" aria-hidden="true"></span>
+
+      <ol class="space-y-10 md:space-y-14">
+
+        <!-- 2018 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-10">
+          <span class="absolute left-[18px] top-7 z-10 -translate-x-1/2 md:left-1/2">
+            <span class="block h-4 w-4 rounded-full border-[3px] border-white bg-rouge shadow-[0_0_0_4px_rgba(225,35,63,.18)]"></span>
+          </span>
+          <div class="ml-11 md:ml-0 md:pr-6 md:text-right">
+            <div class="card-soft card-edge rounded-4xl px-6 py-7 text-left md:text-right">
+              <p class="title-serif text-[13px] font-semibold tracking-[.18em] text-rouge">2018</p>
+              <h3 class="mt-1 title-serif text-[21px] font-bold text-navy-deep">Berawal dari sebuah pertemuan</h3>
+              <div class="story-text mt-3 text-[15.5px] leading-relaxed text-navy/80">
+                <p>Jauh sebelum kisah ini dimulai, Allah telah mempertemukan kami dalam sebuah kesempatan sederhana.</p>
+                <p class="mt-3">Pada tahun 2018, kami pertama kali saling mengetahui satu sama lain melalui kegiatan pelantikan Pramuka, Saka Taruna Bumi. Saat itu, kami hanya sebatas tahu. Tidak ada percakapan, tidak ada sapaan, bahkan mungkin tidak pernah terpikir bahwa suatu hari nanti kami akan berjalan bersama menuju sebuah pernikahan.</p>
+                <p class="mt-3">Waktu pun berlalu. Entah sejak kapan, rasa penasaran membuat kami sesekali mencari tahu tentang satu sama lain dari kejauhan. Hanya saling melihat dan mengenal melalui layar, tanpa pernah benar-benar menyangka bahwa pertemuan sederhana itu adalah awal dari sebuah cerita yang Allah tuliskan.</p>
+              </div>
+              <button type="button" class="story-more mt-3 text-[14px] font-semibold text-rouge underline decoration-rouge/40 underline-offset-4">Baca selengkapnya</button>
+            </div>
+          </div>
+          <div class="hidden md:block" aria-hidden="true"></div>
+        </li>
+
+        <!-- 2023 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-10">
+          <span class="absolute left-[18px] top-7 z-10 -translate-x-1/2 md:left-1/2">
+            <span class="block h-4 w-4 rounded-full border-[3px] border-white bg-navy shadow-[0_0_0_4px_rgba(27,42,107,.18)]"></span>
+          </span>
+          <div class="hidden md:block" aria-hidden="true"></div>
+          <div class="ml-11 md:ml-0 md:pl-6">
+            <div class="card-soft card-edge rounded-4xl px-6 py-7 text-left">
+              <p class="title-serif text-[13px] font-semibold tracking-[.18em] text-navy">2023</p>
+              <h3 class="mt-1 title-serif text-[21px] font-bold text-navy-deep">Percakapan yang mengubah segalanya</h3>
+              <div class="story-text mt-3 text-[15.5px] leading-relaxed text-navy/80">
+                <p>Hingga akhirnya, di awal tahun 2023, sebuah pesan sederhana datang.</p>
+                <p class="mt-3">Awalnya, percakapan itu hanya diniatkan untuk menjalin pertemanan. Tidak ada yang tahu akan menjadi seperti apa akhirnya. Namun, dari percakapan sederhana, tumbuh rasa nyaman. Dari yang awalnya hanya sesekali berbincang, perlahan menjadi semakin sering dan semakin dekat.</p>
+                <p class="mt-3">Hari demi hari, kami mulai saling mengenal lebih jauh. Mengenal kelebihan dan kekurangan, memahami cerita satu sama lain, hingga akhirnya menyadari bahwa hubungan ini ingin dibawa ke arah yang lebih serius.</p>
+                <p class="mt-3">Keinginan untuk menikah sebenarnya telah lama ada. Namun kami percaya, bukan hanya tentang seberapa cepat ingin bersama, melainkan tentang menunggu waktu yang Allah anggap paling tepat.</p>
+              </div>
+              <button type="button" class="story-more mt-3 text-[14px] font-semibold text-rouge underline decoration-rouge/40 underline-offset-4">Baca selengkapnya</button>
+            </div>
+          </div>
+        </li>
+
+        <!-- 2026 — keputusan -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-10">
+          <span class="absolute left-[18px] top-7 z-10 -translate-x-1/2 md:left-1/2">
+            <span class="block h-4 w-4 rounded-full border-[3px] border-white bg-gold shadow-[0_0_0_4px_rgba(201,162,39,.2)]"></span>
+          </span>
+          <div class="ml-11 md:ml-0 md:pr-6 md:text-right">
+            <div class="card-soft card-edge rounded-4xl px-6 py-7 text-left md:text-right">
+              <p class="title-serif text-[13px] font-semibold tracking-[.18em] text-gold">2026</p>
+              <h3 class="mt-1 title-serif text-[21px] font-bold text-navy-deep">Ketika Allah mempertemukan kembali</h3>
+              <div class="story-text mt-3 text-[15.5px] leading-relaxed text-navy/80">
+                <p>Takdir Allah ternyata memiliki cara yang begitu indah.</p>
+                <p class="mt-3">Tanpa pernah kami rencanakan sebelumnya, Allah membawa kami ke tempat pekerjaan yang sama. Dari sana, perjalanan kami menjadi semakin dekat, bukan hanya sebagai dua orang yang saling mengenal, tetapi sebagai dua insan yang mulai belajar berjalan bersama dalam kehidupan nyata.</p>
+                <p class="mt-3">Dengan niat yang baik, dukungan dari keluarga, serta doa dari orang-orang di sekitar kami, keinginan untuk melangkah ke jenjang pernikahan pun semakin nyata.</p>
+                <p class="mt-3">Kami mulai mempersiapkan banyak hal. Meski semuanya terasa serba dadakan, ternyata setiap prosesnya menjadi bagian dari cerita yang akan selalu kami kenang.</p>
+              </div>
+              <button type="button" class="story-more mt-3 text-[14px] font-semibold text-rouge underline decoration-rouge/40 underline-offset-4">Baca selengkapnya</button>
+            </div>
+          </div>
+          <div class="hidden md:block" aria-hidden="true"></div>
+        </li>
+
+        <!-- Awal selamanya -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-10">
+          <span class="absolute left-[18px] top-7 z-10 -translate-x-1/2 md:left-1/2">
+            <span class="block h-4 w-4 rounded-full border-[3px] border-white bg-rouge-light shadow-[0_0_0_4px_rgba(255,107,129,.22)]"></span>
+          </span>
+          <div class="hidden md:block" aria-hidden="true"></div>
+          <div class="ml-11 md:ml-0 md:pl-6">
+            <div class="card-soft card-edge rounded-4xl px-6 py-7 text-left">
+              <p class="title-serif text-[13px] font-semibold tracking-[.18em] text-rouge-light">2026 &amp; SETERUSNYA</p>
+              <h3 class="mt-1 title-serif text-[21px] font-bold text-navy-deep">Awal selamanya</h3>
+              <div class="story-text mt-3 text-[15.5px] leading-relaxed text-navy/80">
+                <p>Hari ini menjadi saksi atas doa-doa yang akhirnya dipertemukan dalam satu ikatan suci.</p>
+                <p class="mt-3">Di hadapan Tuhan dan orang-orang terkasih, kami mengucapkan janji untuk saling mencintai, menjaga, dan menguatkan sepanjang hidup.</p>
+                <p class="mt-3">Pernikahan ini bukan akhir dari kisah kami, melainkan awal dari perjalanan panjang yang akan kami tulis bersama, selangkah demi selangkah.</p>
+              </div>
+              <button type="button" class="story-more mt-3 text-[14px] font-semibold text-rouge underline decoration-rouge/40 underline-offset-4">Baca selengkapnya</button>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 7 ] GALERI FOTO (dengan lightbox zoom)
+     ============================================================ -->
+<section id="galeri" class="bg-petal relative overflow-hidden py-20 sm:py-24" aria-label="Galeri foto">
+  <div class="mx-auto w-full max-w-5xl px-6 text-center">
+
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Potret kebahagiaan</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Galeri</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+    <p class="reveal d2 mt-4 text-[15px] text-navy/70">Ketuk foto untuk memperbesar</p>
+
+    <div id="gallery" class="reveal d2 mt-10 grid auto-rows-[110px] grid-cols-2 gap-3 sm:auto-rows-[150px] md:grid-cols-4">
+
+      <!-- Foto utama: keluarga (paling menonjol) -->
+      <button type="button" class="gal-item group relative col-span-2 row-span-2 overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_20px_44px_-26px_rgba(27,42,107,.7)]"
+              data-index="0" aria-label="Perbesar foto keluarga">
+        <img class="drive-img h-full w-full object-cover object-center"
+             data-drive="1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL"
+             src="https://lh3.googleusercontent.com/d/1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL=w1200"
+             referrerpolicy="no-referrer" loading="lazy" alt="Foto keluarga Riffan dan Shintia" />
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/55 to-transparent px-4 pb-3 pt-10 text-left title-serif text-[13px] font-semibold tracking-[.12em] text-white">
+          KELUARGA KAMI
+        </span>
+      </button>
+
+      <button type="button" class="gal-item overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_16px_34px_-24px_rgba(27,42,107,.7)]" data-index="1" aria-label="Perbesar foto 2">
+        <img class="drive-img h-full w-full object-cover object-center"
+             data-drive="1EpzZHBQ8KVeNSjVZ-7kRlnZPZF5FceVM"
+             src="https://lh3.googleusercontent.com/d/1EpzZHBQ8KVeNSjVZ-7kRlnZPZF5FceVM=w900"
+             referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" />
+      </button>
+
+      <button type="button" class="gal-item overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_16px_34px_-24px_rgba(27,42,107,.7)]" data-index="2" aria-label="Perbesar foto 3">
+        <img class="drive-img h-full w-full object-cover object-center"
+             data-drive="1JUvj-O1xcCB8doALb0jnYYIMJw0ypvTA"
+             src="https://lh3.googleusercontent.com/d/1JUvj-O1xcCB8doALb0jnYYIMJw0ypvTA=w900"
+             referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" />
+      </button>
+
+      <button type="button" class="gal-item overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_16px_34px_-24px_rgba(27,42,107,.7)]" data-index="3" aria-label="Perbesar foto 4">
+        <img class="drive-img h-full w-full object-cover object-center"
+             data-drive="1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR"
+             src="https://lh3.googleusercontent.com/d/1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR=w900"
+             referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" />
+      </button>
+
+      <button type="button" class="gal-item overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_16px_34px_-24px_rgba(27,42,107,.7)]" data-index="4" aria-label="Perbesar foto 5">
+        <img class="drive-img h-full w-full object-cover object-center"
+             data-drive="1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs"
+             src="https://lh3.googleusercontent.com/d/1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs=w900"
+             referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" />
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 8 ] WEDDING GIFT / ANGPAO DIGITAL
+     ============================================================ -->
+<section id="gift" class="bg-sky relative overflow-hidden py-20 sm:py-24" aria-label="Hadiah pernikahan">
+  <div class="mx-auto w-full max-w-3xl px-6 text-center">
+
+    <div class="reveal mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-rouge/12 to-navy/12 ring-1 ring-rouge/25">
+      <svg class="h-8 w-8 text-rouge" aria-hidden="true"><use href="#ic-gift"/></svg>
+    </div>
+
+    <h2 class="reveal d1 mt-4 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Wedding Gift</h2>
+    <svg class="reveal d1 mx-auto mt-2 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d2 mx-auto mt-5 prose-narrow text-[16px] text-navy/80">
+      Doa restu Anda adalah hadiah paling berharga bagi kami. Namun apabila memberi adalah
+      tanda kasih, kami menyediakan kanal berikut dengan penuh rasa terima kasih.
+    </p>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+
+      <!-- ---------- Rekening BRI ---------- -->
+      <article class="reveal d2 card-soft card-edge rounded-5xl px-6 py-8 text-center">
+        <!-- Lencana bank (dibuat dengan CSS agar tidak bergantung gambar eksternal) -->
+        <div class="mx-auto flex h-12 w-28 items-center justify-center rounded-2xl text-white shadow-[0_12px_26px_-16px_rgba(0,80,160,.9)]"
+             style="background:linear-gradient(120deg,#00529C,#2D8BD6)">
+          <span class="title-serif text-[19px] font-bold tracking-[.14em]">BRI</span>
+        </div>
+
+        <p class="mt-5 text-[13.5px] tracking-[.14em] text-navy/60">NOMOR REKENING</p>
+        <p id="rek-bri" class="title-serif mt-1 select-all text-[21px] font-bold tracking-[.04em] text-navy-deep sm:text-[23px]">
+          7874 0100 7489 536
+        </p>
+        <p class="mt-2 text-[15px] text-navy/80">a.n. Shintia Seppianti Safitri</p>
+
+        <button type="button" class="btn btn-primary mt-5 px-6 py-3 text-[14px]"
+                data-copy="787401007489536" data-copy-label="Nomor rekening BRI">
+          <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-copy"/></svg>
+          Salin nomor rekening
+        </button>
+
+        <!-- Ruang QRIS — tinggal isi src gambar jika sudah tersedia -->
+        <div class="mt-6 rounded-3xl border border-dashed border-navy/25 bg-white/60 px-4 py-6">
+          <p class="title-serif text-[12px] tracking-[.16em] text-navy/55">QRIS</p>
+          <!--
+            Jika sudah punya gambar QRIS, hapus <div> placeholder di bawah dan ganti dengan:
+            <img src="Asset/qris-bri.png" alt="QRIS BRI Shintia" class="mx-auto mt-3 w-44 rounded-2xl" />
+          -->
+          <div class="mx-auto mt-3 flex h-36 w-36 items-center justify-center rounded-2xl bg-navy/5 text-[13px] text-navy/45">
+            Belum tersedia
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- Dompet digital DANA ---------- -->
+      <article class="reveal d3 card-soft card-edge rounded-5xl px-6 py-8 text-center">
+        <div class="mx-auto flex h-12 w-28 items-center justify-center rounded-2xl text-white shadow-[0_12px_26px_-16px_rgba(16,140,233,.9)]"
+             style="background:linear-gradient(120deg,#108EE9,#57C1FF)">
+          <span class="title-serif text-[19px] font-bold tracking-[.14em]">DANA</span>
+        </div>
+
+        <p class="mt-5 text-[13.5px] tracking-[.14em] text-navy/60">NOMOR DANA</p>
+        <p id="rek-dana" class="title-serif mt-1 select-all text-[21px] font-bold tracking-[.04em] text-navy-deep sm:text-[23px]">
+          0887 0965 0064
+        </p>
+        <p class="mt-2 text-[15px] text-navy/80">a.n. Syariffan</p>
+
+        <button type="button" class="btn btn-primary mt-5 px-6 py-3 text-[14px]"
+                data-copy="088709650064" data-copy-label="Nomor DANA">
+          <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-copy"/></svg>
+          Salin nomor DANA
+        </button>
+
+        <div class="mt-6 rounded-3xl border border-dashed border-navy/25 bg-white/60 px-4 py-6">
+          <p class="title-serif text-[12px] tracking-[.16em] text-navy/55">QRIS</p>
+          <!--
+            Ganti placeholder di bawah dengan:
+            <img src="Asset/qris-dana.png" alt="QRIS DANA Syariffan" class="mx-auto mt-3 w-44 rounded-2xl" />
+          -->
+          <div class="mx-auto mt-3 flex h-36 w-36 items-center justify-center rounded-2xl bg-navy/5 text-[13px] text-navy/45">
+            Belum tersedia
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Alamat pengiriman kado fisik -->
+    <div class="reveal d3 card-soft mt-8 rounded-4xl px-6 py-7">
+      <p class="title-serif text-[16px] font-semibold text-navy-deep">Kirim hadiah</p>
+      <p class="mt-2 text-[15px] leading-relaxed text-navy/80">
+        Dusun Gunung Balai, Desa Kolok Nan Tuo,<br />Kec. Barangin, Kota Sawahlunto, Sumatera Barat
+      </p>
+      <button type="button" class="btn btn-outline mt-4 px-6 py-2.5 text-[14px]"
+              data-copy="Dusun Gunung Balai, Desa Kolok Nan Tuo, Kec. Barangin, Kota Sawahlunto, Sumatera Barat"
+              data-copy-label="Alamat pengiriman">
+        <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-copy"/></svg>
+        Salin alamat
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 9 ] BUKU TAMU / UCAPAN & KONFIRMASI KEHADIRAN
+     ============================================================ -->
+<section id="buku-tamu" class="bg-petal relative overflow-hidden py-20 sm:py-24" aria-label="Buku tamu dan konfirmasi kehadiran">
+
+  <svg class="absolute -left-12 top-16 h-44 w-44 opacity-30" aria-hidden="true" data-parallax="0.06"><use href="#ic-corner"/></svg>
+
+  <div class="relative mx-auto w-full max-w-3xl px-6 text-center">
+
+    <p class="reveal title-serif text-[11px] tracking-wider-2 text-navy/60">Doa &amp; restu Anda</p>
+    <h2 class="reveal d1 mt-1 title-script text-[4.2rem] leading-none text-gradient sm:text-[5rem]">Buku Tamu</h2>
+    <svg class="reveal d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d2 mx-auto mt-5 prose-narrow text-[16px] text-navy/80">
+      Sampaikan ucapan dan konfirmasikan kehadiran Anda. Setiap doa yang tertulis di sini
+      akan kami simpan dan kami kenang.
+    </p>
+
+    <!-- ---------- Formulir ---------- -->
+    <form id="wish-form" class="reveal d2 card-soft card-edge mt-9 rounded-5xl px-5 py-8 text-left sm:px-9" novalidate>
+
+      <div>
+        <label for="wish-name" class="block title-serif text-[14px] font-semibold text-navy-deep">Nama</label>
+        <input id="wish-name" name="name" type="text" required maxlength="50" autocomplete="name"
+               placeholder="Nama Anda"
+               class="mt-2 w-full rounded-2xl border border-navy/20 bg-white px-4 py-3 text-[16px] text-navy-ink placeholder:text-navy/35 focus:border-rouge focus:outline-none" />
+      </div>
+
+      <div class="mt-5">
+        <label for="wish-attend" class="block title-serif text-[14px] font-semibold text-navy-deep">Konfirmasi kehadiran</label>
+        <select id="wish-attend" name="attendance" required
+                class="mt-2 w-full rounded-2xl border border-navy/20 bg-white px-4 py-3 text-[16px] text-navy-ink focus:border-rouge focus:outline-none">
+          <option value="">Pilih salah satu</option>
+          <option value="Hadir">Insya Allah hadir</option>
+          <option value="Ragu">Masih ragu</option>
+          <option value="Tidak Hadir">Maaf, belum bisa hadir</option>
+        </select>
+      </div>
+
+      <div class="mt-5">
+        <label for="wish-message" class="block title-serif text-[14px] font-semibold text-navy-deep">Ucapan &amp; doa</label>
+        <textarea id="wish-message" name="message" rows="4" required maxlength="500"
+                  placeholder="Tuliskan doa terbaik Anda untuk kami"
+                  class="mt-2 w-full resize-none rounded-2xl border border-navy/20 bg-white px-4 py-3 text-[16px] leading-relaxed text-navy-ink placeholder:text-navy/35 focus:border-rouge focus:outline-none"></textarea>
+        <p class="mt-1 text-right text-[12.5px] text-navy/45"><span id="wish-count">0</span>/500</p>
+      </div>
+
+      <div class="mt-5 text-center">
+        <button id="wish-submit" type="submit" class="btn btn-primary px-8 py-3.5 text-[15px]">
+          <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-send"/></svg>
+          <span id="wish-submit-text">Kirim ucapan</span>
+        </button>
+      </div>
+
+      <p id="wish-error" class="mt-3 hidden text-center text-[14px] font-semibold text-rouge-deep"></p>
+    </form>
+
+    <!-- ---------- Ringkasan kehadiran ---------- -->
+    <div class="reveal d3 mt-8 grid grid-cols-3 gap-2.5">
+      <div class="card-soft rounded-3xl px-2 py-4">
+        <p id="stat-hadir" class="title-serif text-[24px] font-bold leading-none text-rouge">0</p>
+        <p class="mt-1.5 text-[12.5px] text-navy/65">Hadir</p>
+      </div>
+      <div class="card-soft rounded-3xl px-2 py-4">
+        <p id="stat-ragu" class="title-serif text-[24px] font-bold leading-none text-gold">0</p>
+        <p class="mt-1.5 text-[12.5px] text-navy/65">Masih ragu</p>
+      </div>
+      <div class="card-soft rounded-3xl px-2 py-4">
+        <p id="stat-tidak" class="title-serif text-[24px] font-bold leading-none text-navy">0</p>
+        <p class="mt-1.5 text-[12.5px] text-navy/65">Belum bisa</p>
+      </div>
+    </div>
+
+    <!-- ---------- Daftar ucapan (kartu bergulir) ---------- -->
+    <div class="reveal d3 mt-8">
+      <p class="title-serif text-[15px] font-semibold text-navy-deep">
+        <span id="wish-total">0</span> ucapan telah diterima
+      </p>
+
+      <div id="wish-list" class="wish-scroll mt-4 space-y-3.5 pr-1 text-left">
+        <p id="wish-empty" class="card-soft rounded-3xl px-5 py-7 text-center text-[15px] text-navy/60">
+          Belum ada ucapan. Jadilah yang pertama mendoakan kami.
+        </p>
+      </div>
+
+      <p id="wish-mode" class="mt-3 text-[12.5px] text-navy/45"></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [ SECTION 10 ] PENUTUP
+     ============================================================ -->
+<footer class="relative overflow-hidden" aria-label="Penutup undangan">
+
+  <div class="absolute inset-0 parallax-wrap">
+    <img
+      class="drive-img absolute left-0 top-[-10%] h-[120%] w-full object-cover object-center"
+      data-parallax="0.12"
+      data-drive="1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL"
+      src="https://lh3.googleusercontent.com/d/1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL=w1400"
+      referrerpolicy="no-referrer" loading="lazy" alt="" aria-hidden="true" />
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,248,243,.96) 0%,rgba(255,241,240,.94) 50%,rgba(255,251,248,.98) 100%)"></div>
+  </div>
+
+  <svg class="absolute -left-8 top-6 h-44 w-44 opacity-55" aria-hidden="true"><use href="#ic-corner"/></svg>
+  <svg class="absolute -right-8 bottom-24 h-44 w-44 rotate-180 opacity-55" aria-hidden="true"><use href="#ic-corner"/></svg>
+
+  <div class="relative z-10 mx-auto w-full max-w-2xl px-6 py-24 text-center">
+
+    <p class="reveal arabic text-[22px] text-rouge sm:text-[26px]">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِيْ خَيْرٍ</p>
+
+    <svg class="reveal d1 mx-auto mt-6 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d1 mx-auto mt-7 prose-narrow text-[16.5px] leading-relaxed text-navy/85">
+      Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
+      berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+    </p>
+
+    <!-- Catatan kejujuran: acara sederhana -->
+    <div class="reveal d2 card-soft mt-8 rounded-4xl px-6 py-7">
+      <p class="title-serif text-[16px] font-semibold text-navy-deep">Sepatah catatan dari kami</p>
+      <p class="mt-3 text-[15.5px] leading-relaxed text-navy/80">
+        Kami tidak menyelenggarakan walimah dalam skala besar, hanya syukuran sederhana
+        sebagai wujud rasa syukur kepada Allah Subhanahu wa Ta'ala. Kami mohon maaf yang
+        sebesar-besarnya apabila jamuan yang kami sediakan belum dapat menyambut Anda
+        dengan sempurna. Semoga kesederhanaan ini tidak mengurangi keberkahan dan
+        kehangatan silaturahmi di antara kita.
+      </p>
+    </div>
+
+    <p class="reveal d2 mt-8 text-[16px] text-navy/80">Atas kehadiran serta doa restunya, kami ucapkan terima kasih.</p>
+
+    <p class="reveal d3 mt-6 title-serif text-[18px] font-semibold tracking-[.05em] text-navy-deep sm:text-[21px]">
+      Wassalamu'alaikum Warahmatullahi Wabarakatuh
+    </p>
+
+    <div class="reveal d3 mt-10">
+      <p class="title-serif text-[12px] tracking-wider-2 text-navy/55">Kami yang berbahagia</p>
+      <p class="mt-2 title-script text-[4.6rem] leading-[0.9] text-gradient sm:text-[5.6rem]">Riffan &amp; Shintia</p>
+      <p class="mt-2 text-[15px] text-navy/70">beserta segenap keluarga besar</p>
+    </div>
+
+    <svg class="reveal d4 mx-auto mt-10 h-9 w-56 opacity-80" aria-hidden="true"><use href="#ic-divider"/></svg>
+
+    <p class="reveal d4 mt-6 text-[12.5px] text-navy/45">
+      &copy; <span id="year">2026</span> Undangan Pernikahan Riffan &amp; Shintia
+    </p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     ELEMEN MELAYANG: AUDIO, TOAST, LIGHTBOX
+     ============================================================ -->
+
+<!-- Audio latar. Letakkan berkas di folder /Asset pada repo GitHub Anda. -->
+<audio id="bgm" loop preload="none" playsinline></audio>
+
+<!-- Tombol kendali musik -->
+<button id="btn-music" type="button"
+  class="fixed bottom-5 right-4 z-[70] hidden h-14 w-14 items-center justify-center rounded-full bg-white/90 text-rouge shadow-[0_16px_34px_-16px_rgba(27,42,107,.8)] ring-1 ring-navy/12 backdrop-blur safe-b"
+  aria-label="Jeda musik latar" aria-pressed="true">
+  <span id="music-disc" class="spin flex h-full w-full items-center justify-center">
+    <svg class="h-6 w-6" aria-hidden="true"><use id="music-icon" href="#ic-music"/></svg>
+  </span>
+</button>
+
+<!-- Toast notifikasi -->
+<div id="toast-wrap" class="pointer-events-none fixed inset-x-0 bottom-6 z-[90] flex justify-center px-4 safe-b" role="status" aria-live="polite">
+  <div id="toast" class="toast flex max-w-[92vw] items-center gap-2.5 rounded-full px-5 py-3 text-[14.5px] font-semibold text-white shadow-[0_18px_40px_-18px_rgba(27,42,107,.9)]"
+       style="background:linear-gradient(120deg,#E1233F,#1B2A6B)">
+    <svg class="h-[18px] w-[18px] shrink-0" aria-hidden="true"><use href="#ic-check"/></svg>
+    <span id="toast-text">Tersalin</span>
+  </div>
+</div>
+
+<!-- Lightbox galeri -->
+<div id="lightbox" class="fixed inset-0 z-[95] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+  <button id="lb-close" type="button" class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/95 text-navy-deep shadow-lg" aria-label="Tutup pratinjau">
+    <svg class="h-6 w-6" aria-hidden="true"><use href="#ic-close"/></svg>
+  </button>
+  <button id="lb-prev" type="button" class="absolute left-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-navy-deep shadow-lg" aria-label="Foto sebelumnya">
+    <svg class="h-6 w-6" aria-hidden="true"><use href="#ic-left"/></svg>
+  </button>
+  <button id="lb-next" type="button" class="absolute right-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-navy-deep shadow-lg" aria-label="Foto berikutnya">
+    <svg class="h-6 w-6" aria-hidden="true"><use href="#ic-right"/></svg>
+  </button>
+  <figure class="max-h-[86vh] w-full max-w-3xl text-center">
+    <img id="lb-img" class="mx-auto max-h-[78vh] w-auto max-w-full rounded-4xl object-contain shadow-2xl" src="" alt="" />
+    <figcaption id="lb-caption" class="mt-3 text-[14px] text-white/85"></figcaption>
+  </figure>
+</div>
+
+
+<!-- ============================================================
+     SCRIPT UTAMA (VANILLA JS)
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ==========================================================
+     KONFIGURASI UTAMA — ubah data di sini bila diperlukan
+     ========================================================== */
+
+  // Tanggal acara utama (WIB = UTC+7)
+  var TANGGAL_AKAD = new Date('2026-09-25T15:00:00+07:00');
+
+  // Kandidat berkas musik di folder /Asset. Urutan = urutan percobaan.
+  var AUDIO_SOURCES = [
+    'Asset/backsound.mp3',
+    'Asset/Backsound.mp3',
+    'Asset/backsound.m4a',
+    'asset/backsound.mp3'
+  ];
+
+  // Daftar foto galeri (ID Google Drive) untuk lightbox
+  var GALLERY = [
+    { id: '1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL', caption: 'Keluarga kami' },
+    { id: '1EpzZHBQ8KVeNSjVZ-7kRlnZPZF5FceVM', caption: 'Riffan & Shintia' },
+    { id: '1JUvj-O1xcCB8doALb0jnYYIMJw0ypvTA', caption: 'Riffan & Shintia' },
+    { id: '1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR', caption: 'Riffan & Shintia' },
+    { id: '1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs', caption: 'Riffan & Shintia' }
+  ];
+
+  // Data acara untuk fitur "Add to Calendar"
+  var EVENTS = {
+    akad: {
+      title: 'Akad Nikah Riffan & Shintia',
+      start: '20260925T080000Z', // 15.00 WIB
+      end:   '20260925T100000Z', // 17.00 WIB
+      location: 'KUA Kecamatan Barangin, Jl. Soekarno Hatta, Durian I, Kec. Barangin, Kota Sawahlunto, Sumatera Barat 27355',
+      desc: 'Akad nikah Syariffan, S.Pd & Shintia Seppianti Safitri. Pukul 15.00 WIB.'
+    },
+    syukuran1: {
+      title: 'Syukuran Pernikahan Riffan & Shintia (Kolok Nan Tuo)',
+      start: '20260925T100000Z', // 17.00 WIB
+      end:   '20260925T140000Z', // 21.00 WIB
+      location: 'Dusun Gunung Balai, Desa Kolok Nan Tuo, Kec. Barangin, Kota Sawahlunto, Sumatera Barat',
+      desc: 'Syukuran pernikahan di kediaman mempelai wanita. Pukul 17.00 WIB.'
+    },
+    syukuran2: {
+      title: 'Syukuran Pernikahan Riffan & Shintia (Muaro Kalaban)',
+      start: '20260927T010000Z', // 08.00 WIB
+      end:   '20260927T070000Z', // 14.00 WIB
+      location: 'Dusun Sungai Loban, Desa Muaro Kalaban, Kec. Silungkang, Kota Sawahlunto, Sumatera Barat',
+      desc: 'Syukuran pernikahan di kediaman mempelai pria. Pukul 08.00 WIB.'
+    }
+  };
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  /* ==========================================================
+     1. GAMBAR GOOGLE DRIVE — konversi otomatis + cadangan
+     Format tampilan langsung: lh3.googleusercontent.com/d/<ID>=w<lebar>
+     Cadangan               : drive.google.com/thumbnail?id=<ID>&sz=w<lebar>
+     Catatan: berkas di Drive WAJIB dibagikan "Anyone with the link".
+     ========================================================== */
+  function driveDirect(id, w)   { return 'https://lh3.googleusercontent.com/d/' + id + '=w' + (w || 1200); }
+  function driveThumb(id, w)    { return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w' + (w || 1200); }
+  function drivePlaceholder()   {
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#FFF1F0"/><stop offset="1" stop-color="#EEF2FF"/></linearGradient></defs>' +
+      '<rect width="600" height="400" fill="url(%23g)"/>' +
+      '<text x="300" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="#1B2A6B">Riffan &amp; Shintia</text>' +
+      '<text x="300" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#6B7BB8">Foto belum dapat dimuat</text></svg>'
+    );
+  }
+
+  $$('.drive-img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      var id = img.getAttribute('data-drive');
+      var step = parseInt(img.getAttribute('data-fallback') || '0', 10);
+      if (!id) { return; }
+      if (step === 0) {
+        img.setAttribute('data-fallback', '1');
+        img.src = driveThumb(id, 1200);
+      } else if (step === 1) {
+        img.setAttribute('data-fallback', '2');
+        img.src = drivePlaceholder();
+        img.classList.add('object-cover');
+      }
+    });
+  });
+
+
+  /* ==========================================================
+     2. NAMA TAMU DARI URL  ( ?to=Nama  atau  ?kepada=Nama )
+     Contoh: https://situs-anda.github.io/?to=Bapak%20Ahmad
+     ========================================================== */
+  (function setGuestName() {
+    var params = new URLSearchParams(window.location.search);
+    var name = params.get('to') || params.get('kepada') || params.get('guest');
+    if (!name) { return; }
+    name = name.replace(/\+/g, ' ').replace(/[<>]/g, '').trim().slice(0, 60);
+    if (!name) { return; }
+    var el = $('#cover-guest');
+    if (el) { el.textContent = name; }
+    var input = $('#wish-name');
+    if (input) { input.value = name; }
+  })();
+
+
+  /* ==========================================================
+     3. AUDIO LATAR
+     Autoplay diaktifkan tepat saat tombol "Buka Undangan" ditekan
+     (gestur pengguna), sehingga tidak diblokir peramban.
+     ========================================================== */
+  var bgm = $('#bgm');
+  var musicBtn = $('#btn-music');
+  var musicDisc = $('#music-disc');
+  var musicIcon = $('#music-icon');
+  var srcIndex = 0;
+
+  function loadAudioSource() {
+    if (srcIndex >= AUDIO_SOURCES.length) { return; }
+    bgm.src = AUDIO_SOURCES[srcIndex];
+    bgm.load();
+  }
+  loadAudioSource();
+
+  bgm.addEventListener('error', function () {
+    srcIndex += 1;
+    if (srcIndex < AUDIO_SOURCES.length) {
+      loadAudioSource();
+      bgm.play().catch(function () {});
+    }
+  });
+
+  function playMusic() {
+    bgm.volume = 0;
+    var p = bgm.play();
+    if (p && p.catch) { p.catch(function () {}); }
+    // Naikkan volume perlahan agar tidak mengagetkan
+    var target = 0.55, step = 0.03;
+    var fade = setInterval(function () {
+      if (bgm.volume + step >= target) { bgm.volume = target; clearInterval(fade); }
+      else { bgm.volume = Math.min(1, bgm.volume + step); }
+    }, 110);
+    setMusicUI(true);
+  }
+
+  function setMusicUI(playing) {
+    musicBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    musicBtn.setAttribute('aria-label', playing ? 'Jeda musik latar' : 'Putar musik latar');
+    musicIcon.setAttribute('href', playing ? '#ic-music' : '#ic-mute');
+    musicDisc.classList.toggle('is-paused', !playing);
+  }
+
+  musicBtn.addEventListener('click', function () {
+    if (bgm.paused) { playMusic(); }
+    else { bgm.pause(); setMusicUI(false); }
+  });
+
+
+  /* ==========================================================
+     4. AMPLOP DIGITAL — buka kunci scroll & mulai musik
+     ========================================================== */
+  var cover = $('#cover');
+  var openBtn = $('#btn-open');
+
+  // Kelopak melayang pada layar pembuka (dekoratif, halus)
+  (function spawnPetals() {
+    if (reduceMotion) { return; }
+    var host = $('#cover-petals');
+    if (!host) { return; }
+    var colors = ['#FF6B81', '#E1233F', '#3A55B8', '#C9A227'];
+    for (var i = 0; i < 12; i++) {
+      var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      s.setAttribute('viewBox', '0 0 24 24');
+      s.setAttribute('class', 'petal');
+      var size = 10 + Math.random() * 14;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.color = colors[i % colors.length];
+      s.style.animationDuration = (13 + Math.random() * 12) + 's';
+      s.style.animationDelay = (-Math.random() * 18) + 's';
+      var u = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      u.setAttribute('href', '#ic-petal');
+      s.appendChild(u);
+      host.appendChild(s);
+    }
+  })();
+
+  function openInvitation() {
+    cover.classList.add('is-open');
+    document.documentElement.classList.remove('is-locked');
+    document.body.classList.remove('is-locked');
+    musicBtn.classList.remove('hidden');
+    musicBtn.classList.add('flex');
+    playMusic();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+
+    setTimeout(function () {
+      cover.style.display = 'none';
+      revealAll();
+      handleParallax();
+    }, 950);
+  }
+
+  openBtn.addEventListener('click', openInvitation);
+
+
+  /* ==========================================================
+     5. HITUNG MUNDUR
+     ========================================================== */
+  var cdD = $('#cd-d'), cdH = $('#cd-h'), cdM = $('#cd-m'), cdS = $('#cd-s');
+  var cdGrid = $('#cd-grid'), cdDone = $('#cd-done');
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function tickCountdown() {
+    var diff = TANGGAL_AKAD.getTime() - Date.now();
+
+    if (diff <= 0) {
+      cdD.textContent = cdH.textContent = cdM.textContent = cdS.textContent = '00';
+      cdGrid.classList.add('opacity-60');
+      cdDone.classList.remove('hidden');
+      clearInterval(cdTimer);
+      return;
+    }
+
+    var s = Math.floor(diff / 1000);
+    cdD.textContent = pad(Math.floor(s / 86400));
+    cdH.textContent = pad(Math.floor(s % 86400 / 3600));
+    cdM.textContent = pad(Math.floor(s % 3600 / 60));
+    cdS.textContent = pad(s % 60);
+  }
+  tickCountdown();
+  var cdTimer = setInterval(tickCountdown, 1000);
+
+
+  /* ==========================================================
+     6. ANIMASI REVEAL SAAT SCROLL
+     ========================================================== */
+  var revealEls = $$('.reveal');
+  var io = null;
+
+  if ('IntersectionObserver' in window) {
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-shown');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-shown'); });
+  }
+
+  function revealAll() {
+    // Pastikan elemen yang sudah terlihat di layar langsung muncul
+    revealEls.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.95) { el.classList.add('is-shown'); }
+    });
+  }
+
+
+  /* ==========================================================
+     7. PARALLAX SCROLL (halus, dimatikan bila reduce-motion)
+     ========================================================== */
+  var pxEls = $$('[data-parallax]');
+  var ticking = false;
+
+  function handleParallax() {
+    if (reduceMotion) { return; }
+    var vh = window.innerHeight;
+    pxEls.forEach(function (el) {
+      var speed = parseFloat(el.getAttribute('data-parallax')) || 0;
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) { return; }
+      var offset = (r.top + r.height / 2 - vh / 2) * speed;
+      el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+    });
+  }
+
+  window.addEventListener('scroll', function () {
+    if (ticking) { return; }
+    ticking = true;
+    window.requestAnimationFrame(function () { handleParallax(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', handleParallax, { passive: true });
+  handleParallax();
+
+
+  /* ==========================================================
+     8. TOAST NOTIFIKASI
+     ========================================================== */
+  var toast = $('#toast'), toastText = $('#toast-text'), toastTimer = null;
+
+  function showToast(msg) {
+    toastText.textContent = msg;
+    toast.classList.add('is-shown');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-shown'); }, 2600);
+  }
+
+
+  /* ==========================================================
+     9. SALIN KE CLIPBOARD
+     ========================================================== */
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy') ? resolve() : reject(); }
+      catch (e) { reject(e); }
+      finally { document.body.removeChild(ta); }
+    });
+  }
+
+  $$('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var value = btn.getAttribute('data-copy');
+      var label = btn.getAttribute('data-copy-label') || 'Teks';
+      copyText(value)
+        .then(function () { showToast(label + ' tersalin'); })
+        .catch(function () { showToast('Gagal menyalin, silakan salin manual'); });
+    });
+  });
+
+
+  /* ==========================================================
+     10. ADD TO CALENDAR (Google Calendar & berkas .ics)
+     ========================================================== */
+  function googleCalUrl(ev) {
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text='     + encodeURIComponent(ev.title)
+      + '&dates='    + ev.start + '/' + ev.end
+      + '&details='  + encodeURIComponent(ev.desc + '\n\nUndangan: ' + window.location.href)
+      + '&location=' + encodeURIComponent(ev.location)
+      + '&ctz=Asia/Jakarta';
+  }
+
+  function icsBody(list) {
+    var lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Riffan & Shintia//Undangan//ID',
+      'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'
+    ];
+    list.forEach(function (ev, i) {
+      lines.push(
+        'BEGIN:VEVENT',
+        'UID:riffan-shintia-' + i + '-' + Date.now() + '@wedding',
+        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+        'DTSTART:' + ev.start,
+        'DTEND:' + ev.end,
+        'SUMMARY:' + ev.title,
+        'DESCRIPTION:' + ev.desc.replace(/\n/g, '\\n'),
+        'LOCATION:' + ev.location,
+        'BEGIN:VALARM', 'TRIGGER:-PT1440M', 'ACTION:DISPLAY',
+        'DESCRIPTION:Pengingat acara pernikahan Riffan & Shintia', 'END:VALARM',
+        'END:VEVENT'
+      );
+    });
+    lines.push('END:VCALENDAR');
+    return lines.join('\r\n');
+  }
+
+  function downloadIcs(list, filename) {
+    var blob = new Blob([icsBody(list)], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+  }
+
+  $$('[data-cal]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var type = btn.getAttribute('data-cal');
+      var key = btn.getAttribute('data-event');
+      var list = (key === 'all') ? [EVENTS.akad, EVENTS.syukuran1, EVENTS.syukuran2] : [EVENTS[key]];
+
+      if (type === 'google') {
+        window.open(googleCalUrl(list[0]), '_blank', 'noopener');
+        return;
+      }
+      downloadIcs(list, 'Pernikahan-Riffan-Shintia' + (key === 'all' ? '' : '-' + key) + '.ics');
+      showToast('Berkas kalender diunduh');
+    });
+  });
+
+
+  /* ==========================================================
+     11. TIMELINE KISAH — buka/tutup teks panjang
+     ========================================================== */
+  $$('.story-more').forEach(function (btn) {
+    var box = btn.previousElementSibling;
+    // Sembunyikan tombol bila teks memang sudah pendek
+    if (box.scrollHeight <= box.clientHeight + 8) { btn.classList.add('hidden'); return; }
+    btn.addEventListener('click', function () {
+      var open = box.classList.toggle('is-open');
+      btn.textContent = open ? 'Tutup' : 'Baca selengkapnya';
+    });
+  });
+
+
+  /* ==========================================================
+     12. LIGHTBOX GALERI (klik, panah, ESC, geser)
+     ========================================================== */
+  var lb = $('#lightbox'), lbImg = $('#lb-img'), lbCap = $('#lb-caption');
+  var lbIndex = 0, lastFocus = null;
+
+  function openLightbox(i) {
+    lbIndex = (i + GALLERY.length) % GALLERY.length;
+    var item = GALLERY[lbIndex];
+    lbImg.src = driveDirect(item.id, 1600);
+    lbImg.alt = item.caption;
+    lbCap.textContent = item.caption + ' \u00B7 ' + (lbIndex + 1) + '/' + GALLERY.length;
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+    document.documentElement.classList.add('is-locked');
+    document.body.classList.add('is-locked');
+    $('#lb-close').focus();
+  }
+
+  function closeLightbox() {
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+    document.documentElement.classList.remove('is-locked');
+    document.body.classList.remove('is-locked');
+    if (lastFocus) { lastFocus.focus(); }
+  }
+
+  // Cadangan bila gambar resolusi besar gagal dimuat
+  lbImg.addEventListener('error', function () {
+    var item = GALLERY[lbIndex];
+    if (lbImg.src.indexOf('thumbnail') === -1) { lbImg.src = driveThumb(item.id, 1600); }
+    else { lbImg.src = drivePlaceholder(); }
+  });
+
+  $$('.gal-item').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lastFocus = b;
+      openLightbox(parseInt(b.getAttribute('data-index'), 10));
+    });
+  });
+
+  $('#lb-close').addEventListener('click', closeLightbox);
+  $('#lb-prev').addEventListener('click', function () { openLightbox(lbIndex - 1); });
+  $('#lb-next').addEventListener('click', function () { openLightbox(lbIndex + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) { closeLightbox(); } });
+
+  document.addEventListener('keydown', function (e) {
+    if (lb.classList.contains('hidden')) { return; }
+    if (e.key === 'Escape')     { closeLightbox(); }
+    if (e.key === 'ArrowLeft')  { openLightbox(lbIndex - 1); }
+    if (e.key === 'ArrowRight') { openLightbox(lbIndex + 1); }
+  });
+
+  // Geser jari pada perangkat sentuh
+  var touchX = 0;
+  lb.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 55) { openLightbox(lbIndex + (dx < 0 ? 1 : -1)); }
+  }, { passive: true });
+
+
+  /* ==========================================================
+     13. TAHUN OTOMATIS PADA FOOTER
+     ========================================================== */
+  $('#year').textContent = new Date().getFullYear();
+
+
+  /* ==========================================================
+     14. API INTERNAL untuk modul buku tamu (Firebase)
+     ========================================================== */
+  window.UndanganUI = {
+    toast: showToast,
+    reduceMotion: reduceMotion
+  };
+})();
+</script>
+
+
+<!--
+  ============================================================================
+  PANDUAN FIREBASE  —  agar ucapan & konfirmasi kehadiran tersimpan permanen
+  ============================================================================
+
+  LANGKAH 1 — BUAT PROYEK
+    1. Buka https://console.firebase.google.com  lalu klik "Add project".
+    2. Beri nama, misal: undangan-riffan-shintia. Google Analytics boleh dimatikan.
+
+  LANGKAH 2 — AKTIFKAN FIRESTORE
+    1. Menu kiri: Build > Firestore Database > "Create database".
+    2. Pilih "Start in production mode".
+    3. Pilih lokasi: asia-southeast2 (Jakarta)  atau  asia-southeast1 (Singapore).
+
+  LANGKAH 3 — DAFTARKAN APLIKASI WEB
+    1. Project Overview > ikon </> (Web) > beri nama, misal "Undangan Web".
+    2. JANGAN centang Firebase Hosting (karena Anda deploy ke GitHub Pages).
+    3. Salin objek firebaseConfig yang muncul.
+
+  LANGKAH 4 — TEMPEL KONFIGURASI
+    Ganti isi variabel FIREBASE_CONFIG di script bawah ini dengan milik Anda:
+
+      const FIREBASE_CONFIG = {
+        apiKey:            "AIzaSy...",
+        authDomain:        "undangan-riffan-shintia.firebaseapp.com",
+        projectId:         "undangan-riffan-shintia",
+        storageBucket:     "undangan-riffan-shintia.appspot.com",
+        messagingSenderId: "1234567890",
+        appId:             "1:1234567890:web:abcdef123456"
+      };
+
+    Selesai. Situs otomatis beralih dari mode demo ke mode Firebase.
+
+  LANGKAH 5 — ATUR ATURAN KEAMANAN (Firestore > Rules), lalu Publish:
+
+      rules_version = '2';
+      service cloud.firestore {
+        match /databases/{database}/documents {
+          match /wishes/{doc} {
+            allow read: if true;
+            allow create: if request.resource.data.keys().hasOnly(
+                               ['name','attendance','message','createdAt'])
+                          && request.resource.data.name is string
+                          && request.resource.data.name.size() > 0
+                          && request.resource.data.name.size() <= 50
+                          && request.resource.data.message is string
+                          && request.resource.data.message.size() > 0
+                          && request.resource.data.message.size() <= 500
+                          && request.resource.data.attendance in ['Hadir','Ragu','Tidak Hadir'];
+            allow update, delete: if false;
+          }
+        }
+      }
+
+    Aturan di atas memperbolehkan siapa pun membaca dan menulis ucapan baru,
+    tetapi TIDAK memperbolehkan siapa pun mengubah atau menghapus ucapan.
+    Anda tetap bisa menghapus lewat Firebase Console bila ada ucapan tak pantas.
+
+  LANGKAH 6 — DEPLOY KE GITHUB PAGES
+    1. Buat repo baru (contoh: undangan-riffan-shintia), centang Public.
+    2. Unggah index.html ke root repo, dan buat folder "Asset" berisi backsound.mp3.
+    3. Settings > Pages > Source: "Deploy from a branch" > Branch: main / (root) > Save.
+    4. Tunggu 1-2 menit. Situs siap di https://USERNAME.github.io/NAMA-REPO/
+    5. Kembali ke Firebase Console > Authentication > Settings > Authorized domains,
+       tambahkan USERNAME.github.io (opsional, berguna bila nanti pakai Auth).
+
+  MENGIRIM UNDANGAN PER TAMU
+    Tambahkan parameter ?to= di akhir tautan, contoh:
+      https://USERNAME.github.io/undangan-riffan-shintia/?to=Bapak%20Ahmad%20Sekeluarga
+
+  CATATAN PENTING TENTANG FOTO GOOGLE DRIVE
+    Setiap berkas foto di Google Drive HARUS dibagikan dengan akses
+    "Anyone with the link - Viewer", jika tidak foto akan gagal dimuat.
+    Untuk performa terbaik, sangat disarankan mengunduh foto dan menaruhnya
+    di folder /Asset pada repo, lalu ganti src menjadi "Asset/nama-foto.jpg".
+  ============================================================================
+-->
+<script type="module">
+  /* ==========================================================
+     BUKU TAMU — Firebase Firestore
+     Bila konfigurasi belum diisi, otomatis memakai mode demo
+     (penyimpanan lokal peramban) supaya tampilan tetap berfungsi.
+     ========================================================== */
+
+  // >>> GANTI DENGAN KONFIGURASI FIREBASE ANDA <<<
+  const FIREBASE_CONFIG = {
+    apiKey:            "ISI_API_KEY_ANDA",
+    authDomain:        "ISI_PROJECT_ID.firebaseapp.com",
+    projectId:         "ISI_PROJECT_ID",
+    storageBucket:     "ISI_PROJECT_ID.appspot.com",
+    messagingSenderId: "ISI_SENDER_ID",
+    appId:             "ISI_APP_ID"
+  };
+
+  const IS_CONFIGURED = !String(FIREBASE_CONFIG.apiKey).startsWith('ISI_');
+
+  const form      = document.getElementById('wish-form');
+  const inName    = document.getElementById('wish-name');
+  const inAttend  = document.getElementById('wish-attend');
+  const inMsg     = document.getElementById('wish-message');
+  const counter   = document.getElementById('wish-count');
+  const errorBox  = document.getElementById('wish-error');
+  const submitBtn = document.getElementById('wish-submit');
+  const submitTxt = document.getElementById('wish-submit-text');
+  const listBox   = document.getElementById('wish-list');
+  const emptyBox  = document.getElementById('wish-empty');
+  const totalEl   = document.getElementById('wish-total');
+  const modeEl    = document.getElementById('wish-mode');
+  const statHadir = document.getElementById('stat-hadir');
+  const statRagu  = document.getElementById('stat-ragu');
+  const statTidak = document.getElementById('stat-tidak');
+
+  const toast = (msg) => (window.UndanganUI ? window.UndanganUI.toast(msg) : null);
+
+  /* ---------- Penghitung karakter ---------- */
+  inMsg.addEventListener('input', () => { counter.textContent = inMsg.value.length; });
+
+  /* ---------- Utilitas tampilan ---------- */
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+
+  const initial = (name) => (name.trim()[0] || '?').toUpperCase();
+
+  const badge = (att) => {
+    if (att === 'Hadir')  return '<span class="rounded-full bg-rouge/10 px-3 py-1 text-[12px] font-semibold text-rouge-deep">Insya Allah hadir</span>';
+    if (att === 'Ragu')   return '<span class="rounded-full bg-gold/15 px-3 py-1 text-[12px] font-semibold text-[#8A6E12]">Masih ragu</span>';
+    return '<span class="rounded-full bg-navy/10 px-3 py-1 text-[12px] font-semibold text-navy-deep">Belum bisa hadir</span>';
+  };
+
+  const timeAgo = (ms) => {
+    if (!ms) return 'Baru saja';
+    const d = Math.floor((Date.now() - ms) / 1000);
+    if (d < 60)     return 'Baru saja';
+    if (d < 3600)   return Math.floor(d / 60) + ' menit lalu';
+    if (d < 86400)  return Math.floor(d / 3600) + ' jam lalu';
+    if (d < 2592000) return Math.floor(d / 86400) + ' hari lalu';
+    return new Date(ms).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
+  function render(items) {
+    totalEl.textContent = items.length;
+
+    let h = 0, r = 0, t = 0;
+    items.forEach((w) => {
+      if (w.attendance === 'Hadir') h++;
+      else if (w.attendance === 'Ragu') r++;
+      else t++;
+    });
+    statHadir.textContent = h;
+    statRagu.textContent  = r;
+    statTidak.textContent = t;
+
+    if (!items.length) {
+      listBox.innerHTML = '';
+      listBox.appendChild(emptyBox);
+      emptyBox.classList.remove('hidden');
+      return;
+    }
+
+    listBox.innerHTML = items.map((w) => `
+      <article class="card-soft rounded-3xl px-5 py-4">
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[16px] font-bold text-white"
+                style="background:linear-gradient(130deg,#E1233F,#1B2A6B)">${escapeHtml(initial(w.name))}</span>
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <p class="title-serif text-[16px] font-bold text-navy-deep">${escapeHtml(w.name)}</p>
+              ${badge(w.attendance)}
+            </div>
+            <p class="mt-1.5 whitespace-pre-line break-words text-[15px] leading-relaxed text-navy/85">${escapeHtml(w.message)}</p>
+            <p class="mt-2 text-[12px] text-navy/45">${timeAgo(w.createdAt)}</p>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    startAutoScroll();
+  }
+
+  /* ---------- Gulir otomatis daftar ucapan ----------
+     Listener dipasang sekali saja agar tidak menumpuk setiap render ulang. */
+  let scrollTimer = null;
+  let scrollPaused = false;
+  let pauseTimer = null;
+
+  ['mouseenter', 'touchstart', 'focusin', 'wheel'].forEach((ev) =>
+    listBox.addEventListener(ev, () => {
+      scrollPaused = true;
+      clearTimeout(pauseTimer);
+    }, { passive: true }));
+
+  ['mouseleave', 'touchend'].forEach((ev) =>
+    listBox.addEventListener(ev, () => {
+      clearTimeout(pauseTimer);
+      pauseTimer = setTimeout(() => { scrollPaused = false; }, 4000);
+    }, { passive: true }));
+
+  function startAutoScroll() {
+    clearInterval(scrollTimer);
+    if (window.UndanganUI && window.UndanganUI.reduceMotion) return;
+    if (listBox.scrollHeight <= listBox.clientHeight + 20) return;
+
+    scrollTimer = setInterval(() => {
+      if (scrollPaused) return;
+      if (listBox.scrollTop + listBox.clientHeight >= listBox.scrollHeight - 2) listBox.scrollTop = 0;
+      else listBox.scrollTop += 1;
+    }, 45);
+  }
+
+  /* ---------- Validasi formulir ---------- */
+  function validate() {
+    errorBox.classList.add('hidden');
+    if (!inName.value.trim())   { return 'Nama belum diisi.'; }
+    if (!inAttend.value)        { return 'Pilih konfirmasi kehadiran terlebih dahulu.'; }
+    if (!inMsg.value.trim())    { return 'Ucapan belum diisi.'; }
+    return null;
+  }
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.remove('hidden');
+  }
+
+  function setLoading(on) {
+    submitBtn.disabled = on;
+    submitBtn.style.opacity = on ? '.65' : '1';
+    submitTxt.textContent = on ? 'Mengirim...' : 'Kirim ucapan';
+  }
+
+  /* ==========================================================
+     MODE A — FIREBASE FIRESTORE (real-time)
+     ========================================================== */
+  async function initFirebase() {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js');
+    const {
+      getFirestore, collection, addDoc, onSnapshot,
+      query, orderBy, limit, serverTimestamp
+    } = await import('https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js');
+
+    const app = initializeApp(FIREBASE_CONFIG);
+    const db  = getFirestore(app);
+    const col = collection(db, 'wishes');
+
+    modeEl.textContent = 'Tersambung ke Firebase — ucapan tersimpan permanen.';
+
+    // Dengarkan perubahan secara langsung (real-time)
+    onSnapshot(query(col, orderBy('createdAt', 'desc'), limit(300)), (snap) => {
+      const items = snap.docs.map((d) => {
+        const v = d.data();
+        return {
+          name: v.name || 'Tamu',
+          attendance: v.attendance || 'Hadir',
+          message: v.message || '',
+          createdAt: v.createdAt && v.createdAt.toMillis ? v.createdAt.toMillis() : Date.now()
+        };
+      });
+      render(items);
+    }, (err) => {
+      console.error('Firestore error:', err);
+      modeEl.textContent = 'Gagal memuat ucapan. Periksa konfigurasi dan aturan Firestore.';
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = validate();
+      if (err) { showError(err); return; }
+
+      setLoading(true);
+      try {
+        await addDoc(col, {
+          name: inName.value.trim().slice(0, 50),
+          attendance: inAttend.value,
+          message: inMsg.value.trim().slice(0, 500),
+          createdAt: serverTimestamp()
+        });
+        inMsg.value = '';
+        counter.textContent = '0';
+        toast('Ucapan terkirim. Terima kasih.');
+        listBox.scrollTop = 0;
+      } catch (e2) {
+        console.error(e2);
+        showError('Ucapan gagal dikirim. Periksa koneksi Anda lalu coba lagi.');
+      } finally {
+        setLoading(false);
+      }
+    });
+  }
+
+  /* ==========================================================
+     MODE B — DEMO (penyimpanan lokal peramban)
+     Aktif selama FIREBASE_CONFIG belum diisi.
+     ========================================================== */
+  function initLocal() {
+    const KEY = 'wishes_riffan_shintia';
+
+    const seed = [
+      { name: 'Keluarga Besar',  attendance: 'Hadir', message: 'Barakallahu lakuma wa baraka alaikuma wa jama\'a bainakuma fi khair. Semoga menjadi keluarga sakinah, mawaddah, wa rahmah.', createdAt: Date.now() - 86400000 },
+      { name: 'Rekan Sejawat',   attendance: 'Hadir', message: 'Selamat menempuh hidup baru, Pak Riffan dan Buk Shintia. Semoga selalu dilimpahi keberkahan.', createdAt: Date.now() - 43200000 }
+    ];
+
+    const read = () => {
+      try {
+        const raw = localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw) : seed.slice();
+      } catch (e) { return seed.slice(); }
+    };
+
+    const write = (arr) => {
+      try { localStorage.setItem(KEY, JSON.stringify(arr)); } catch (e) { /* diabaikan */ }
+    };
+
+    let items = read();
+    modeEl.textContent = 'Mode pratinjau — isi FIREBASE_CONFIG agar ucapan tersimpan permanen.';
+    render(items);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const err = validate();
+      if (err) { showError(err); return; }
+
+      setLoading(true);
+      items = [{
+        name: inName.value.trim().slice(0, 50),
+        attendance: inAttend.value,
+        message: inMsg.value.trim().slice(0, 500),
+        createdAt: Date.now()
+      }].concat(items);
+
+      write(items);
+      render(items);
+      inMsg.value = '';
+      counter.textContent = '0';
+      toast('Ucapan terkirim. Terima kasih.');
+      listBox.scrollTop = 0;
+      setLoading(false);
+    });
+  }
+
+  /* ---------- Jalankan ---------- */
+  if (IS_CONFIGURED) {
+    initFirebase().catch((e) => {
+      console.error('Firebase gagal dimuat, beralih ke mode lokal:', e);
+      initLocal();
+    });
+  } else {
+    initLocal();
+  }
+</script>
+
+</body>
+</html>
