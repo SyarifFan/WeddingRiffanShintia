@@ -194,12 +194,19 @@
 
     /* ---------- Bingkai foto mempelai: persegi 1:1 ---------- */
     .photo-frame{
-      position:relative; width:100%; max-width:15.5rem; margin-inline:auto;
-      aspect-ratio:1/1; border-radius:2.25rem; overflow:hidden;
+      position:relative; width:100%; max-width:14.5rem; margin-inline:auto;
+      aspect-ratio:3/4; border-radius:2.25rem; overflow:hidden;
       background:#fff; border:7px solid #fff;
-      box-shadow:0 28px 60px -24px rgba(27,42,107,.55), 0 8px 20px -12px rgba(225,35,63,.30);
+      box-shadow:0 30px 64px -24px rgba(27,42,107,.55), 0 8px 20px -12px rgba(225,35,63,.30);
       animation:floatSoft 7.5s ease-in-out infinite;
     }
+    /* Kilau yang menyapu bingkai foto secara berkala */
+    .photo-frame::after{
+      content:''; position:absolute; inset:0; z-index:2; pointer-events:none;
+      background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.55) 48%,transparent 60%);
+      transform:translateX(-120%); animation:frameShine 7s ease-in-out infinite;
+    }
+    @keyframes frameShine{ 0%{transform:translateX(-120%)} 42%{transform:translateX(120%)} 100%{transform:translateX(120%)} }
     .photo-frame.delay{ animation-delay:-3.6s; }
     /* Potongan foto diambil dari sisi PALING ATAS, bukan tengah, dan tidak di-fit */
     .photo-frame img{
@@ -288,16 +295,48 @@
     .seal{ transform-origin:top center; transition:transform 1s cubic-bezier(.65,0,.35,1) }
     #cover.open .seal{ transform:rotateX(-175deg) }
 
-    /* ---------- Logo bank ---------- */
+    /* ---------- Logo bank: kotak 1:1 membulat ---------- */
     .logo-tile{
+      position:relative; overflow:hidden;
       display:flex; align-items:center; justify-content:center;
-      height:3.5rem; padding-inline:1.5rem; border-radius:1.1rem; background:#fff;
-      box-shadow:0 14px 30px -18px rgba(27,42,107,.55); border:1px solid rgba(27,42,107,.08);
-      transition:transform .4s cubic-bezier(.34,1.4,.64,1);
+      width:5.5rem; height:5.5rem; padding:1rem; border-radius:1.75rem;
+      background:linear-gradient(152deg,#ffffff 0%,#F6F9FF 100%);
+      border:1px solid rgba(27,42,107,.10);
+      box-shadow:0 20px 38px -20px rgba(27,42,107,.55), inset 0 1px 0 rgba(255,255,255,.95);
+      transition:transform .45s cubic-bezier(.34,1.4,.64,1), box-shadow .45s ease;
     }
-    .logo-tile:hover{ transform:translateY(-4px) rotate(-1.5deg) }
-    .logo-tile img{ height:1.9rem; width:auto; object-fit:contain }
-    .logo-fallback{ font-family:'Playfair Display',serif; font-weight:800; letter-spacing:.08em; font-size:1.25rem }
+    .logo-tile::after{
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.75) 50%,transparent 62%);
+      transform:translateX(-130%); animation:frameShine 6s ease-in-out infinite;
+    }
+    .logo-tile:hover{ transform:translateY(-6px) rotate(-2.5deg); box-shadow:0 28px 46px -20px rgba(27,42,107,.6) }
+    .logo-tile img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain }
+    .logo-fallback{ font-family:'Playfair Display',serif; font-weight:800; letter-spacing:.06em; font-size:1.15rem; text-align:center }
+
+    /* ---------- Glassmorphism (dipakai terbatas agar scroll tetap ringan) ---------- */
+    .glass{
+      background:rgba(255,255,255,.52);
+      -webkit-backdrop-filter:blur(16px) saturate(150%);
+      backdrop-filter:blur(16px) saturate(150%);
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 22px 48px -26px rgba(27,42,107,.45), inset 0 1px 0 rgba(255,255,255,.85);
+    }
+
+    /* ---------- Menu cepat ---------- */
+    .quick{
+      display:flex; flex-direction:column; align-items:center; gap:.4rem;
+      border-radius:1.35rem; padding:.85rem .35rem;
+      transition:transform .4s cubic-bezier(.34,1.4,.64,1), box-shadow .4s ease, color .3s ease;
+      color:var(--navy-deep);
+    }
+    .quick:hover{ transform:translateY(-5px); color:var(--rouge); box-shadow:0 20px 36px -22px rgba(225,35,63,.7) }
+    .quick svg{ width:1.35rem; height:1.35rem }
+    .quick span{ font-family:'Playfair Display',serif; font-size:.68rem; letter-spacing:.06em; font-weight:600; line-height:1.1 }
+
+    /* ---------- Kilau pada judul gradien ---------- */
+    .t-grad{ background-size:220% 100%; animation:gradShift 9s ease-in-out infinite }
+    @keyframes gradShift{ 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 
     @media (prefers-reduced-motion: reduce){
       *{ animation:none !important; transition-duration:.01ms !important }
@@ -403,6 +442,12 @@
     <path d="M4 5.5A2.5 2.5 0 016.5 3H19v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M4 20.5A2.5 2.5 0 016.5 18H19v3H6.5A2.5 2.5 0 014 20.5z"/><path d="M9 8h6M9 11h6"/></symbol>
   <symbol id="ic-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20.3l-1.5-1.35C5.2 14.2 2 11.4 2 7.9A5.1 5.1 0 017.2 2.8c1.9 0 3.7.9 4.8 2.3a6 6 0 014.8-2.3A5.1 5.1 0 0122 7.9c0 3.5-3.2 6.3-8.5 11.05z"/></symbol>
+  <symbol id="ic-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.6" cy="9.4" r="1.8"/><path d="M3.5 17.5l5-4.6 4.2 3.8 3.3-2.8 4.5 3.9"/></symbol>
+  <symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.4 8.4 0 01-9 8.4 9.6 9.6 0 01-2.8-.4L3 21l1.6-4.6A8.1 8.1 0 013 11.5a8.4 8.4 0 019-8.4 8.4 8.4 0 019 8.4z"/><path d="M8.5 11.5h7M8.5 8.5h4"/></symbol>
 </defs></svg>
 
 
@@ -416,7 +461,8 @@
          data-drive="12AVp7LwGmW0EgXFsb3uo637OnsqksV07"
          src="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1400"
          referrerpolicy="no-referrer" alt="Riffan dan Shintia" />
-    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,251,248,.90) 0%,rgba(255,241,240,.93) 44%,rgba(255,248,243,.97) 100%)"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,251,248,.62) 0%,rgba(255,243,240,.72) 44%,rgba(255,248,243,.94) 100%)"></div>
+    <div class="absolute inset-0" style="background:radial-gradient(72% 48% at 50% 46%, rgba(255,253,251,.82) 0%, rgba(255,250,246,.34) 56%, transparent 80%)"></div>
   </div>
 
   <svg class="absolute -left-7 -top-7 h-40 w-40 opacity-85 sm:h-56 sm:w-56" aria-hidden="true"><use href="#ic-corner"/></svg>
@@ -425,14 +471,14 @@
   <div id="cover-petals" class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"></div>
 
   <!-- Stiker kartun pada amplop -->
-  <div class="sticker sw-a left-[4%] top-[12%] h-16 w-16 sm:h-24 sm:w-24">
+  <div class="sticker sw-a left-[3%] top-[10%] h-24 w-24 sm:h-32 sm:w-32">
     <img class="dimg" data-drive="1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu"
-         src="https://lh3.googleusercontent.com/d/1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu=w400"
+         src="https://lh3.googleusercontent.com/d/1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu=w500"
          referrerpolicy="no-referrer" alt="" />
   </div>
-  <div class="sticker sw-b right-[5%] top-[16%] h-14 w-14 sm:h-20 sm:w-20">
+  <div class="sticker sw-b right-[4%] top-[14%] h-20 w-20 sm:h-28 sm:w-28">
     <img class="dimg" data-drive="1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv"
-         src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w400"
+         src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w500"
          referrerpolicy="no-referrer" alt="" />
   </div>
 
@@ -452,10 +498,16 @@
 
     <p class="t-serif mt-3 text-[15px] font-semibold tracking-[.14em] text-navy-deep">JUM'AT, 25 SEPTEMBER 2026</p>
 
-    <div class="card card-edge mt-7 rounded-4xl px-6 py-5">
-      <p class="text-[15px] text-navy/75">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-      <p id="cover-guest" class="t-serif mt-1 text-[22px] font-bold text-rouge-deep">Tamu Undangan</p>
-      <p class="mt-2 text-[14px] leading-relaxed text-navy/70">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
+    <div class="glass mt-7 rounded-5xl px-6 py-6">
+      <p class="t-serif text-[11px] tr2 text-navy/65">KEPADA YANG TERHORMAT</p>
+      <p id="cover-guest" class="t-serif mt-2 text-[21px] font-bold leading-snug text-rouge-deep">
+        Bapak / Ibu / Saudara / i
+      </p>
+      <div class="mx-auto my-3 h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+      <p class="text-[14.5px] leading-relaxed text-navy/80">
+        Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir
+        dan memberikan doa restu pada hari bahagia kami.
+      </p>
     </div>
 
     <button id="btn-open" type="button" class="btn btn-primary mt-7 px-9 py-3.5 text-[15px]">
@@ -480,7 +532,10 @@
          data-drive="12AVp7LwGmW0EgXFsb3uo637OnsqksV07"
          src="https://lh3.googleusercontent.com/d/12AVp7LwGmW0EgXFsb3uo637OnsqksV07=w1600"
          referrerpolicy="no-referrer" alt="Riffan dan Shintia" />
-    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,251,248,.86) 0%,rgba(255,241,240,.82) 42%,rgba(255,248,243,.98) 100%)"></div>
+    <!-- Lapisan 1: gradien tipis, jauh lebih transparan agar foto terbaca jelas -->
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,251,248,.30) 0%,rgba(255,243,240,.40) 38%,rgba(255,248,243,.95) 100%)"></div>
+    <!-- Lapisan 2: halo lembut tepat di belakang teks, bukan menutup seluruh foto -->
+    <div class="absolute inset-0" style="background:radial-gradient(70% 46% at 50% 44%, rgba(255,253,251,.80) 0%, rgba(255,250,246,.32) 56%, transparent 80%)"></div>
   </div>
 
   <!-- Lapis 2: ornamen, bergerak sedang -->
@@ -488,13 +543,13 @@
   <svg class="absolute -right-8 top-20 h-36 w-36 -scale-x-100 opacity-60 sm:h-56 sm:w-56" data-px="0.20" aria-hidden="true"><use href="#ic-corner"/></svg>
 
   <!-- Lapis 3: stiker, bergerak paling cepat -->
-  <div class="sticker sw-b left-[3%] bottom-[16%] h-20 w-20 sm:h-28 sm:w-28" data-px="-0.42">
+  <div class="sticker sw-b left-[2%] bottom-[14%] h-28 w-28 sm:h-36 sm:w-36" data-px="-0.42">
     <img class="dimg" data-drive="1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-"
-         src="https://lh3.googleusercontent.com/d/1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-=w400"
+         src="https://lh3.googleusercontent.com/d/1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-=w500"
          referrerpolicy="no-referrer" alt="" /></div>
-  <div class="sticker sw-c right-[4%] bottom-[22%] h-16 w-16 sm:h-24 sm:w-24" data-px="0.46">
+  <div class="sticker sw-c right-[3%] bottom-[20%] h-24 w-24 sm:h-32 sm:w-32" data-px="0.46">
     <img class="dimg" data-drive="1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe"
-         src="https://lh3.googleusercontent.com/d/1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe=w400"
+         src="https://lh3.googleusercontent.com/d/1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe=w500"
          referrerpolicy="no-referrer" alt="" /></div>
 
   <div class="relative z-10 w-full max-w-2xl px-6 py-24 text-center">
@@ -509,21 +564,37 @@
       kami bermaksud menyelenggarakan pernikahan putra-putri kami.
     </p>
 
-    <div class="rv rv-s d3 card card-edge mx-auto mt-7 inline-flex items-center gap-5 rounded-4xl px-8 py-4">
+    <div class="rv rv-s d3 glass mx-auto mt-7 inline-flex items-center gap-5 rounded-5xl px-8 py-4">
       <div class="text-center">
         <p class="t-serif text-[11px] tracking-[.2em] text-navy/60">JUM'AT</p>
         <p class="t-serif text-[32px] font-extrabold leading-none text-rouge">25</p>
         <p class="t-serif text-[11px] tracking-[.2em] text-navy/60">SEP</p>
       </div>
-      <span class="h-12 w-px bg-navy/15"></span>
+      <span class="h-12 w-px bg-navy/20"></span>
       <div class="text-left">
         <p class="t-serif text-[19px] font-bold text-navy-deep">September 2026</p>
-        <p class="text-[14px] text-navy/70">Sawahlunto, Sumatera Barat</p>
+        <p class="text-[14px] text-navy/75">Sawahlunto, Sumatera Barat</p>
       </div>
     </div>
 
-    <p class="rv d4 mt-10 text-[13px] text-navy/55">Gulir ke bawah untuk membaca undangan</p>
-    <svg class="rv d4 mx-auto mt-2 h-6 w-6 animate-bounce text-rouge/70" aria-hidden="true"><use href="#ic-down"/></svg>
+    <!-- ---------- Menu cepat menuju tiap bagian ---------- -->
+    <nav class="rv d4 glass mx-auto mt-8 grid max-w-md grid-cols-3 gap-1 rounded-4xl p-2 sm:grid-cols-6 sm:max-w-2xl" aria-label="Menu cepat">
+      <a href="#mempelai" class="quick" data-jump="mempelai">
+        <svg aria-hidden="true"><use href="#ic-ring"/></svg><span>Mempelai</span></a>
+      <a href="#acara" class="quick" data-jump="acara">
+        <svg aria-hidden="true"><use href="#ic-cal"/></svg><span>Acara</span></a>
+      <a href="#kisah" class="quick" data-jump="kisah">
+        <svg aria-hidden="true"><use href="#ic-heart"/></svg><span>Kisah</span></a>
+      <a href="#galeri" class="quick" data-jump="galeri">
+        <svg aria-hidden="true"><use href="#ic-image"/></svg><span>Galeri</span></a>
+      <a href="#gift" class="quick" data-jump="gift">
+        <svg aria-hidden="true"><use href="#ic-gift"/></svg><span>Hadiah</span></a>
+      <a href="#buku-tamu" class="quick" data-jump="buku-tamu">
+        <svg aria-hidden="true"><use href="#ic-chat"/></svg><span>Ucapan</span></a>
+    </nav>
+
+    <p class="rv d5 mt-9 text-[13px] text-navy/60">Gulir ke bawah untuk membaca undangan</p>
+    <svg class="rv d5 mx-auto mt-2 h-6 w-6 animate-bounce text-rouge/70" aria-hidden="true"><use href="#ic-down"/></svg>
   </div>
 </header>
 
@@ -536,7 +607,7 @@
   <span class="blob left-[-10%] top-[8%] h-64 w-64" style="background:rgba(255,107,129,.45)" aria-hidden="true"></span>
   <span class="blob right-[-8%] bottom-[10%] h-72 w-72" style="background:rgba(90,116,216,.38); animation-delay:-7s" aria-hidden="true"></span>
 
-  <div class="sticker sw-a left-[2%] top-[30%] hidden h-20 w-20 sm:block" data-px="-0.35">
+  <div class="sticker sw-a left-[1%] top-[28%] hidden h-28 w-28 sm:block" data-px="-0.35">
     <img class="dimg" data-drive="1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY"
          src="https://lh3.googleusercontent.com/d/1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY=w400"
          referrerpolicy="no-referrer" alt="" /></div>
@@ -611,7 +682,7 @@
 
         <svg class="mx-auto my-5 h-6 w-36 opacity-70" aria-hidden="true"><use href="#ic-branch"/></svg>
 
-        <p class="text-[15px] text-navy/80">Putra pertama dari lima bersaudara</p>
+        <p class="text-[15px] text-navy/80">Putra pertama dari enam bersaudara</p>
         <p class="mt-2 text-[16.5px] leading-relaxed text-navy-deep">
           Bapak Syawaluddin<br /><span class="text-[14px] text-navy/55">&amp;</span><br />Ibu Deli Fitri
         </p>
@@ -669,7 +740,7 @@
   <span class="blob left-[8%] top-[6%] h-56 w-56" style="background:rgba(255,107,129,.36)" aria-hidden="true"></span>
   <span class="blob right-[6%] bottom-[6%] h-56 w-56" style="background:rgba(90,116,216,.34); animation-delay:-5s" aria-hidden="true"></span>
 
-  <div class="sticker sw-c left-[4%] bottom-[8%] h-16 w-16 sm:h-24 sm:w-24" data-px="-0.40">
+  <div class="sticker sw-c left-[3%] bottom-[6%] h-24 w-24 sm:h-32 sm:w-32" data-px="-0.40">
     <img class="dimg" data-drive="1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv"
          src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w400"
          referrerpolicy="no-referrer" alt="" /></div>
@@ -679,10 +750,10 @@
     <h2 class="rv d1 mt-1 t-script text-[4.4rem] leading-none t-grad sm:text-[5.4rem]">Save The Date</h2>
     <svg class="rv d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
 
-    <p class="rv d2 mt-5 text-[16px] text-navy/80">Jum'at, 25 September 2026 &middot; Pukul 15.00 WIB</p>
+    <p class="rv d2 mt-5 text-[16px] text-navy/80">Jum'at, 25 September 2026 &middot; Pukul 14.00 WIB</p>
 
     <!-- Stiker inline di antara kartu hitung mundur -->
-    <div class="rv rv-s d2 mx-auto mt-8 h-24 w-24 sm:h-28 sm:w-28">
+    <div class="rv rv-s d2 mx-auto mt-8 h-32 w-32 sm:h-40 sm:w-40">
       <img class="dimg sticker-inline" data-drive="1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu"
            src="https://lh3.googleusercontent.com/d/1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu=w500"
            referrerpolicy="no-referrer" alt="Ilustrasi kartun Riffan dan Shintia" />
@@ -727,7 +798,7 @@
   <svg class="absolute -left-12 top-24 h-48 w-48 opacity-35" data-px="-0.18" aria-hidden="true"><use href="#ic-corner"/></svg>
   <svg class="absolute -right-12 bottom-24 h-48 w-48 rotate-180 opacity-35" data-px="0.18" aria-hidden="true"><use href="#ic-corner"/></svg>
 
-  <div class="sticker sw-b right-[3%] top-[8%] hidden h-20 w-20 sm:block" data-px="0.38">
+  <div class="sticker sw-b right-[2%] top-[6%] hidden h-28 w-28 sm:block" data-px="0.38">
     <img class="dimg" data-drive="1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe"
          src="https://lh3.googleusercontent.com/d/1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe=w400"
          referrerpolicy="no-referrer" alt="" /></div>
@@ -752,7 +823,7 @@
           <div class="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
 
           <p class="t-serif text-[19px] font-bold text-rouge-deep">Jum'at, 25 September 2026</p>
-          <p class="mt-1 text-[16px] text-navy/85">Pukul 15.00 WIB &ndash; selesai</p>
+          <p class="mt-1 text-[16px] text-navy/85">Pukul 14.00 WIB &ndash; selesai</p>
 
           <p class="mt-5 t-serif text-[17px] font-bold text-navy-deep">KUA Kecamatan Barangin</p>
           <p class="mx-auto mt-1 max-w-sm text-[14.5px] leading-relaxed text-navy/70">
@@ -848,7 +919,7 @@
   <span class="blob left-[-8%] top-[12%] h-64 w-64" style="background:rgba(255,107,129,.34)" aria-hidden="true"></span>
   <span class="blob right-[-10%] bottom-[14%] h-72 w-72" style="background:rgba(90,116,216,.30); animation-delay:-6s" aria-hidden="true"></span>
 
-  <div class="sticker sw-a left-[2%] bottom-[6%] hidden h-20 w-20 lg:block" data-px="-0.36">
+  <div class="sticker sw-a left-[1%] bottom-[5%] hidden h-28 w-28 lg:block" data-px="-0.36">
     <img class="dimg" data-drive="1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-"
          src="https://lh3.googleusercontent.com/d/1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-=w400"
          referrerpolicy="no-referrer" alt="" /></div>
@@ -960,58 +1031,63 @@
     <svg class="rv d1 mx-auto mt-3 h-9 w-56 opacity-90" aria-hidden="true"><use href="#ic-divider"/></svg>
     <p class="rv d2 mt-4 text-[15px] text-navy/70">Ketuk foto untuk memperbesar</p>
 
-    <div id="gallery" class="rv d2 mt-10 grid auto-rows-[112px] grid-cols-2 gap-3 sm:auto-rows-[152px] md:grid-cols-4">
+    <!--
+      Tata letak enam kolom pada layar lebar:
+        baris 1-2 : foto keluarga (4 kolom, dua baris) + dua foto pendukung (2 kolom)
+        baris 3   : dua foto pendukung selebar setengah kanvas (3 kolom masing-masing)
+    -->
+    <div id="gallery" class="rv d2 mt-10 grid auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[158px] md:grid-cols-6">
 
-      <button type="button" class="gal group relative col-span-2 row-span-2 overflow-hidden rounded-5xl ring-1 ring-navy/10 shadow-[0_24px_50px_-26px_rgba(27,42,107,.7)]"
+      <button type="button" class="gal group relative col-span-2 row-span-2 overflow-hidden rounded-5xl ring-1 ring-navy/10 shadow-[0_26px_54px_-26px_rgba(27,42,107,.7)] md:col-span-4"
               data-index="0" aria-label="Perbesar foto keluarga">
         <img class="dimg h-full w-full object-cover object-center" data-drive="1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL"
-             src="https://lh3.googleusercontent.com/d/1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL=w1200"
+             src="https://lh3.googleusercontent.com/d/1yCADJiwVPRnhPOaLZgC_4qoikFf2YMOL=w1400"
              referrerpolicy="no-referrer" loading="lazy" alt="Foto keluarga Riffan dan Shintia" />
-        <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/60 to-transparent px-4 pb-3 pt-12 text-left t-serif text-[13px] font-bold tracking-[.12em] text-white">KELUARGA KAMI</span>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/65 to-transparent px-5 pb-4 pt-14 text-left t-serif text-[14px] font-bold tracking-[.12em] text-white">KELUARGA KAMI</span>
       </button>
 
-      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)]" data-index="1" aria-label="Perbesar foto 2">
+      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)] md:col-span-2" data-index="1" aria-label="Perbesar foto 2">
         <img class="dimg h-full w-full object-cover object-center" data-drive="1EpzZHBQ8KVeNSjVZ-7kRlnZPZF5FceVM"
              src="https://lh3.googleusercontent.com/d/1EpzZHBQ8KVeNSjVZ-7kRlnZPZF5FceVM=w900"
              referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" /></button>
 
-      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)]" data-index="2" aria-label="Perbesar foto 3">
+      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)] md:col-span-2" data-index="2" aria-label="Perbesar foto 3">
         <img class="dimg h-full w-full object-cover object-center" data-drive="1JUvj-O1xcCB8doALb0jnYYIMJw0ypvTA"
              src="https://lh3.googleusercontent.com/d/1JUvj-O1xcCB8doALb0jnYYIMJw0ypvTA=w900"
              referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" /></button>
 
-      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)]" data-index="3" aria-label="Perbesar foto 4">
+      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)] md:col-span-3" data-index="3" aria-label="Perbesar foto 4">
         <img class="dimg h-full w-full object-cover object-center" data-drive="1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR"
-             src="https://lh3.googleusercontent.com/d/1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR=w900"
+             src="https://lh3.googleusercontent.com/d/1XGA_PDmw9b0-o-rbR7xuSiehxlCAOlNR=w1100"
              referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" /></button>
 
-      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)]" data-index="4" aria-label="Perbesar foto 5">
+      <button type="button" class="gal overflow-hidden rounded-4xl ring-1 ring-navy/10 shadow-[0_18px_36px_-24px_rgba(27,42,107,.7)] md:col-span-3" data-index="4" aria-label="Perbesar foto 5">
         <img class="dimg h-full w-full object-cover object-center" data-drive="1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs"
-             src="https://lh3.googleusercontent.com/d/1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs=w900"
+             src="https://lh3.googleusercontent.com/d/1o98nLeZSivkOA2EQxyVPHEkFyyOAKSMs=w1100"
              referrerpolicy="no-referrer" loading="lazy" alt="Foto Riffan dan Shintia" /></button>
     </div>
 
     <!-- Barisan stiker kartun -->
-    <div class="rv d3 mt-12 flex items-end justify-center gap-4 sm:gap-8">
-      <div class="h-16 w-16 sm:h-24 sm:w-24">
+    <div class="rv d3 mt-14 flex items-end justify-center gap-3 sm:gap-7">
+      <div class="h-24 w-24 sm:h-32 sm:w-32">
         <img class="dimg sticker-inline" data-drive="1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu"
-             src="https://lh3.googleusercontent.com/d/1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu=w400"
+             src="https://lh3.googleusercontent.com/d/1D5TTCNSHEpEO6DgtN29lhmrhWNAFnyMu=w500"
              referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
-      <div class="h-20 w-20 sm:h-28 sm:w-28">
+      <div class="h-28 w-28 sm:h-40 sm:w-40">
         <img class="dimg sticker-inline" style="animation-delay:-2s" data-drive="1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-"
-             src="https://lh3.googleusercontent.com/d/1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-=w400"
+             src="https://lh3.googleusercontent.com/d/1UzgaR3t_GUoRc2QgyIQ-B6dbfnIgzzb-=w500"
+             referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
+      <div class="h-32 w-32 sm:h-48 sm:w-48">
+        <img class="dimg sticker-inline" style="animation-delay:-4s" data-drive="1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe"
+             src="https://lh3.googleusercontent.com/d/1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe=w600"
+             referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
+      <div class="h-28 w-28 sm:h-40 sm:w-40">
+        <img class="dimg sticker-inline" style="animation-delay:-6s" data-drive="1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY"
+             src="https://lh3.googleusercontent.com/d/1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY=w500"
              referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
       <div class="h-24 w-24 sm:h-32 sm:w-32">
-        <img class="dimg sticker-inline" style="animation-delay:-4s" data-drive="1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe"
-             src="https://lh3.googleusercontent.com/d/1XtxP-TEIwPHXCfQHWsh1icZoFDmnwbRe=w500"
-             referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
-      <div class="h-20 w-20 sm:h-28 sm:w-28">
-        <img class="dimg sticker-inline" style="animation-delay:-6s" data-drive="1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY"
-             src="https://lh3.googleusercontent.com/d/1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY=w400"
-             referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
-      <div class="h-16 w-16 sm:h-24 sm:w-24">
         <img class="dimg sticker-inline" style="animation-delay:-8s" data-drive="1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv"
-             src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w400"
+             src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w500"
              referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" /></div>
     </div>
   </div>
@@ -1026,7 +1102,7 @@
   <span class="blob left-[-8%] top-[14%] h-64 w-64" style="background:rgba(90,116,216,.32)" aria-hidden="true"></span>
   <span class="blob right-[-8%] bottom-[10%] h-64 w-64" style="background:rgba(255,107,129,.32); animation-delay:-5s" aria-hidden="true"></span>
 
-  <div class="sticker sw-b right-[3%] top-[10%] hidden h-20 w-20 lg:block" data-px="0.34">
+  <div class="sticker sw-b right-[2%] top-[8%] hidden h-28 w-28 lg:block" data-px="0.34">
     <img class="dimg" data-drive="1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY"
          src="https://lh3.googleusercontent.com/d/1m7WGGeCPZY0mim_FzQTwpDhg-voUWrPY=w400"
          referrerpolicy="no-referrer" alt="" /></div>
@@ -1047,35 +1123,49 @@
     <div class="mt-10 grid gap-6 sm:grid-cols-2">
 
       <!-- BRI -->
-      <article class="rv rv-l d2 card card-edge card-lift rounded-6xl px-6 py-9 text-center">
-        <div class="logo-tile mx-auto">
+      <article class="rv rv-l d2 card card-edge card-lift relative overflow-hidden rounded-6xl px-6 py-9 text-center">
+        <span class="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-rouge via-gold to-navy-light" aria-hidden="true"></span>
+
+        <div class="logo-tile mx-auto mt-2">
           <img class="brand-logo" data-brand="BRI" data-brand-color="#00529C"
                src="https://commons.wikimedia.org/wiki/Special:FilePath/BRI_2025.svg?width=420"
                referrerpolicy="no-referrer" loading="lazy" alt="Logo Bank BRI" />
         </div>
 
-        <p class="mt-5 text-[13.5px] tracking-[.14em] text-navy/60">NOMOR REKENING</p>
-        <p class="t-serif mt-1 select-all text-[22px] font-extrabold tracking-[.04em] text-navy-deep sm:text-[24px]">7874 0100 7489 536</p>
-        <p class="mt-2 text-[15px] text-navy/80">a.n. Shintia Seppianti Safitri</p>
+        <p class="t-serif mt-4 text-[17px] font-bold text-navy-deep">Bank BRI</p>
 
-        <button type="button" class="btn btn-primary mt-6 px-6 py-3 text-[14px]"
+        <div class="mx-auto mt-4 rounded-3xl border border-dashed border-navy/25 bg-white/70 px-4 py-4">
+          <p class="text-[11.5px] tracking-[.16em] text-navy/55">NOMOR REKENING</p>
+          <p class="t-serif mt-1.5 select-all text-[21px] font-extrabold tracking-[.05em] text-navy-deep sm:text-[23px]">7874 0100 7489 536</p>
+        </div>
+
+        <p class="mt-3 text-[15px] text-navy/80">a.n. Shintia Seppianti Safitri</p>
+
+        <button type="button" class="btn btn-primary mt-5 px-6 py-3 text-[14px]"
                 data-copy="787401007489536" data-copy-label="Nomor rekening BRI">
           <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-copy"/></svg>Salin nomor rekening</button>
       </article>
 
       <!-- DANA -->
-      <article class="rv rv-r d3 card card-edge card-lift rounded-6xl px-6 py-9 text-center">
-        <div class="logo-tile mx-auto">
+      <article class="rv rv-r d3 card card-edge card-lift relative overflow-hidden rounded-6xl px-6 py-9 text-center">
+        <span class="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-navy-light via-gold to-rouge" aria-hidden="true"></span>
+
+        <div class="logo-tile mx-auto mt-2">
           <img class="brand-logo" data-brand="DANA" data-brand-color="#108EE9"
                src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo_dana_blue.svg?width=420"
                referrerpolicy="no-referrer" loading="lazy" alt="Logo DANA" />
         </div>
 
-        <p class="mt-5 text-[13.5px] tracking-[.14em] text-navy/60">NOMOR DANA</p>
-        <p class="t-serif mt-1 select-all text-[22px] font-extrabold tracking-[.04em] text-navy-deep sm:text-[24px]">0887 0965 0064</p>
-        <p class="mt-2 text-[15px] text-navy/80">a.n. Syariffan</p>
+        <p class="t-serif mt-4 text-[17px] font-bold text-navy-deep">Dompet Digital DANA</p>
 
-        <button type="button" class="btn btn-primary mt-6 px-6 py-3 text-[14px]"
+        <div class="mx-auto mt-4 rounded-3xl border border-dashed border-navy/25 bg-white/70 px-4 py-4">
+          <p class="text-[11.5px] tracking-[.16em] text-navy/55">NOMOR DANA</p>
+          <p class="t-serif mt-1.5 select-all text-[21px] font-extrabold tracking-[.05em] text-navy-deep sm:text-[23px]">0887 0965 0064</p>
+        </div>
+
+        <p class="mt-3 text-[15px] text-navy/80">a.n. Syariffan</p>
+
+        <button type="button" class="btn btn-primary mt-5 px-6 py-3 text-[14px]"
                 data-copy="088709650064" data-copy-label="Nomor DANA">
           <svg class="h-[18px] w-[18px]" aria-hidden="true"><use href="#ic-copy"/></svg>Salin nomor DANA</button>
       </article>
@@ -1214,7 +1304,7 @@
       </p>
     </div>
 
-    <div class="rv d2 mx-auto mt-10 h-28 w-28 sm:h-36 sm:w-36">
+    <div class="rv d2 mx-auto mt-10 h-36 w-36 sm:h-48 sm:w-48">
       <img class="dimg sticker-inline" data-drive="1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv"
            src="https://lh3.googleusercontent.com/d/1vY2fjnBccbeOZ3nZ0W0iDM1_9H6RAtkv=w500"
            referrerpolicy="no-referrer" loading="lazy" alt="Ilustrasi kartun Riffan dan Shintia" />
@@ -1281,7 +1371,7 @@
   'use strict';
 
   /* ---------- Konfigurasi ---------- */
-  var TANGGAL_AKAD = new Date('2026-09-25T15:00:00+07:00');
+  var TANGGAL_AKAD = new Date('2026-09-25T14:00:00+07:00');
 
   var AUDIO_SOURCES = [
     'Asset/backsound.mp3', 'Asset/Backsound.mp3', 'Asset/backsound.m4a', 'asset/backsound.mp3'
@@ -1298,9 +1388,9 @@
   var EVENTS = {
     akad: {
       title:'Akad Nikah Riffan & Shintia',
-      start:'20260925T080000Z', end:'20260925T100000Z',
+      start:'20260925T070000Z', end:'20260925T090000Z',
       location:'KUA Kecamatan Barangin, Jl. Soekarno Hatta, Durian I, Kec. Barangin, Kota Sawahlunto, Sumatera Barat 27355',
-      desc:'Akad nikah Syariffan, S.Pd & Shintia Seppianti Safitri. Pukul 15.00 WIB.'
+      desc:'Akad nikah Syariffan, S.Pd & Shintia Seppianti Safitri. Pukul 14.00 WIB.'
     },
     syukuran1: {
       title:'Syukuran Pernikahan Riffan & Shintia (Kolok Nan Tuo)',
@@ -1365,7 +1455,10 @@
 
 
   /* ==========================================================
-     3. NAMA TAMU DARI URL  ( ?to=Nama )
+     3. SAPAAN TAMU
+     Bawaannya universal ("Bapak / Ibu / Saudara / i") sehingga satu
+     tautan berlaku untuk semua orang. Personalisasi hanya berjalan
+     bila parameter ?to= sengaja ditambahkan pada URL.
      ========================================================== */
   (function () {
     var p = new URLSearchParams(window.location.search);
@@ -1376,6 +1469,23 @@
     var el = $('#cover-guest'); if (el) { el.textContent = name; }
     var input = $('#wish-name'); if (input) { input.value = name; }
   })();
+
+
+  /* ==========================================================
+     3b. MENU CEPAT — gulir halus tanpa mengubah alamat URL
+     Memakai JavaScript, bukan scroll-behavior CSS, agar roda mouse
+     dan sentuhan tetap responsif seperti biasa.
+     ========================================================== */
+  $$('[data-jump]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.getElementById(link.getAttribute('data-jump'));
+      if (!target) { return; }
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 8;
+      if (reduceMotion) { window.scrollTo(0, top); }
+      else { window.scrollTo({ top: top, behavior: 'smooth' }); }
+    });
+  });
 
 
   /* ==========================================================
